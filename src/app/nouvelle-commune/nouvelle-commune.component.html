@@ -1,0 +1,33 @@
+
+<div class="col-md-4 mx-auto">
+    <button (click)="gotoList()" class="btn btn-primary">Liste des communes</button><br><br>
+    <div class="card">
+        <div class="card-header">
+            Nouvelle commune
+        </div>
+        <div class="card-body">
+        <form #f="ngForm" (ngSubmit)="onSaveCommune(f)">
+            <div class="form-group">
+                <label  class="control-label">
+                    Intitulé en francais
+                </label>
+                <input type="text" name="commune" ngModel  ngModel class="form-control">
+            </div>
+            <div class="form-group">
+                <label  class="control-label">
+                    Intitulé en arabe
+                </label>
+                <input type="text" name="commune_ar" ngModel class="form-control">
+            </div>
+            <div class="form-group">
+                Choisir province   <select class="form-control" name="province" *ngIf="provinces" [(ngModel)]="selectedProvince" (ngModelChange)="onRowClick()">
+                     
+                     <option *ngFor="let province of provinces['_embedded'].provinces" [value]="province.id">{{province.province}}</option>
+                   </select>
+             </div>
+            <button class="btn btn-success" type="submit">Ajouter</button>
+    
+        </form>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="col-md-4 mx-auto">
+    <button (click)="gotoList()" class="btn btn-primary">Liste des statuts</button><br><br>
+    <div class="card card-default  mx-auto">
+        <div class="card-header">
+            Nouveau statut
+        </div>
+        <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onUpdateStatut(f.value)" *ngIf="currentStatut">
+                <div class="form-group">
+                    <label  class="control-label">
+                        Statut
+                    </label>
+                    <input type="text" name="statut" ngModel  [(ngModel)]="currentStatut.statut" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label  class="control-label">
+                        Statut en arabe
+                    </label>
+                    <input type="text" name="statut_ar" ngModel [(ngModel)]="currentStatut.statut_ar" class="form-control">
+                </div>
+              
+                <button class="btn btn-success" type="submit">Modifier</button>
+        
+            </form>
+        </div>
+       
+    </div>
+</div>

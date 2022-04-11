@@ -1,0 +1,60 @@
+ <!-- <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a routerLink="/">Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Provinces
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/provinces">Chercher</a></li>
+          <li><a routerLink="/new-province">Ajouter</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>  -->
+
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <div class="container">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <!-- <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['is-active']">Home </a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/projets']" [routerLinkActive]="['is-active']">Projets</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/provinces']" [routerLinkActive]="['is-active']">Provinces</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/mos']" [routerLinkActive]="['is-active']">Maitres d'ouvrage</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/statuts']" [routerLinkActive]="['is-active']">Statuts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/communes']" [routerLinkActive]="['is-active']">Communes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/axes']" [routerLinkActive]="['is-active']">Axes</a>
+      </li>
+    
+    </ul>
+  </div>
+</div>
+</nav>
+<div class="mt-5">
+  <router-outlet> </router-outlet>
+</div>
+
+  

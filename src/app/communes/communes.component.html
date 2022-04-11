@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header">Liste des communes</div>
+        <div class="col-sm-5 mt-2 mx-auto form-group">
+           Choisir province   <select class="form-control" *ngIf="provinces" [(ngModel)]="selectedProvince" (ngModelChange)="onRowClick()">
+                
+                <option *ngFor="let province of provinces['_embedded'].provinces" [value]="province.id">{{province.province}}</option>
+              </select>
+        </div>
+        
+        <div class="card-body">
+            <div class="d-flex">
+            <div class="d-inline-block">
+                <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
+                    <div class="form-group">
+                        <label>Commune</label>&nbsp;
+                        <input type="text" ngModel name="keyword">&nbsp;
+                        <button type="submit" class="btn btn-success"><i class="fa fa-search" style="font-size:17px"></i> chercher</button>
+                    </div>
+               </form>
+            </div>
+           
+            <div class="ml-auto d-inline-block">
+             
+                <button (click)="ajouter()" class="btn btn-primary">
+                    <i class="fa fa-plus-square-o" style="font-size:17px"></i> Ajouter
+                    </button>
+            </div>
+        </div>
+      
+          
+            <table class="table table-bordered" *ngIf="communes">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                       <th>Commune fr</th>
+                        <th>Commune ar</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of communes['_embedded'].communes">
+                        <td>{{p.id}}</td>
+                        <td>{{p.commune}}</td>
+                        <td>{{p.commune_ar}}</td>
+                     
+                        
+                       
+                       
+                        <td>
+                            <a class="btn btn-danger" (click)="onDeleteCommune(p['_links'].self.href)"><i class="fa fa-remove" style="font-size:17px"></i> Delete</a>&nbsp;&nbsp;&nbsp;
+                            <a class="btn btn-success" (click)="onEditCommune(p)"><i class="fa fa-edit" style="font-size:17px"></i> Modifier</a>
+                          
+                        </td>
+                    </tr>
+                </tbody>
+              
+            </table>
+            <ul *ngIf="pages" class="pagination" [ngClass]="selected==true? 'd-none' : 'd-flex'">
+                <li [ngClass]="i==currentPage ? 'page-item active' : 'page-item'" *ngFor="let p of pages;let i = index">
+                    <a class="clickable page-link" (click)="onPageCommune(i)">{{i}}</a>
+                </li>
+            </ul>
+         
+          
+           
+        </div>
+    </div>
+</div>

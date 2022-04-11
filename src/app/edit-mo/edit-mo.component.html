@@ -1,0 +1,28 @@
+<div class="col-md-4 mx-auto">
+    <button (click)="gotoList()" class="btn btn-primary">Liste des maitres d'ouvrages</button><br><br>
+    <div class="card card-default  mx-auto">
+        <div class="card-header">
+            Nouvelle mo
+        </div>
+        <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onUpdateMO(f.value)" *ngIf="currentMO">
+                <div class="form-group">
+                    <label  class="control-label">
+                        MaitreOuvrages
+                    </label>
+                    <input type="text" name="maitreOuvrage" ngModel  [(ngModel)]="currentMO.maitreOuvrage" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label  class="control-label">
+                        MaitreOuvrages en arabe
+                    </label>
+                    <input type="text" name="maitreOuvrage_ar" ngModel [(ngModel)]="currentMO.maitreOuvrage_ar" class="form-control">
+                </div>
+              
+                <button class="btn btn-success" type="submit">Modifier</button>
+        
+            </form>
+        </div>
+       
+    </div>
+</div>

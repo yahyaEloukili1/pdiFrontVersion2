@@ -1,0 +1,28 @@
+<div class="col-md-4 mx-auto">
+    <button (click)="gotoList()" class="btn btn-primary">Liste des provinces</button> <br> <br>
+    <div class="card card-default  mx-auto">
+        <div class="card-header">
+            Nouvelle province
+        </div>
+        <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onUpdateProvince(f.value)" *ngIf="currentProvince">
+                <div class="form-group">
+                    <label  class="control-label">
+                        Province
+                    </label>
+                    <input type="text" name="province" ngModel  [(ngModel)]="currentProvince.province" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label  class="control-label">
+                        Province en arabe
+                    </label>
+                    <input type="text" name="province_ar" ngModel [(ngModel)]="currentProvince.province_ar" class="form-control">
+                </div>
+              
+                <button class="btn btn-success" type="submit">Modifier</button>
+        
+            </form>
+        </div>
+       
+    </div>
+</div>

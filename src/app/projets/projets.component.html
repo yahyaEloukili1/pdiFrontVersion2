@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header">Liste des projets</div>
+        
+        <div class="card-body">
+            <div class="d-flex">
+            <div class="d-inline-block">
+                <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
+                    <div class="form-group">
+                        <label>projet</label>&nbsp;
+                        <input type="text" ngModel name="keyword">&nbsp;
+                        <button type="submit" class="btn btn-success"><i class="fa fa-search" style="font-size:17px"></i> chercher</button>
+                    </div>
+               </form>
+            </div>
+           
+            <div class="ml-auto d-inline-block">
+             
+                <button (click)="ajouter()" class="btn btn-primary">
+                    <i class="fa fa-plus-square-o" style="font-size:17px"></i> Ajouter
+                    </button>
+            </div>
+        </div>
+      
+          
+            <table class="table table-bordered" *ngIf="projets">
+                <thead>
+                    <tr>
+                        
+                        <th>Intitule francais</th>
+                        <th>Intitule arabe</th>
+                        <th>location</th>
+                        <th>consistence</th>
+                        <th>benificiares</th>
+                        <th>delai</th>
+                        <th>cout</th>
+                        <th>dateLancement</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of projets['_embedded'].projets">
+                        
+                        <td>{{p.projet}}</td>
+                        <td>{{p.projet_ar}}</td>
+                        <td>{{p.location}}</td>
+                        <td>{{p.consistence}}</td>
+                        <td>{{p.benificiares}}</td>
+                        <td>{{p.delai}}</td>
+                        <td>{{p.cout}}</td>
+                        <td>{{p.dateLancement}}</td>
+                        
+                       
+                       
+                        <td>
+                            <a class="btn btn-danger" (click)="onDeleteProjet(p['_links'].self.href)"><i class="fa fa-remove" style="font-size:17px"></i></a>&nbsp;&nbsp;&nbsp;
+                            <a class="btn btn-success" (click)="onEditProjet(p)"><i class="fa fa-edit" style="font-size:17px"></i> </a>
+                          
+                        </td>
+                    </tr>
+                </tbody>
+              
+            </table>
+            <ul *ngIf="pages" class="pagination">
+                <li [ngClass]="i==currentPage ? 'page-item active' : 'page-item'" *ngFor="let p of pages;let i = index">
+                    <a class="clickable page-link" (click)="onPageProjet(i)">{{i}}</a>
+                </li>
+            </ul>
+         
+          
+           
+        </div>
+    </div>
+</div>
