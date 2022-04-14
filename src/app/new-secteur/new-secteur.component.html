@@ -1,0 +1,33 @@
+
+<div class="col-md-4 mx-auto">
+    <button (click)="gotoList()" class="btn btn-primary">Liste des secteurs</button><br><br>
+    <div class="card">
+        <div class="card-header">
+            Nouvelle secteur
+        </div>
+        <div class="card-body">
+        <form #f="ngForm" (ngSubmit)="onSaveSecteur(f)">
+            <div class="form-group">
+                <label  class="control-label">
+                    Intitulé en francais
+                </label>
+                <input type="text" name="secteur" ngModel  ngModel class="form-control">
+            </div>
+            <div class="form-group">
+                <label  class="control-label">
+                    Intitulé en arabe
+                </label>
+                <input type="text" name="secteur_ar" ngModel class="form-control">
+            </div>
+            <div class="form-group">
+                Choisir axe   <select class="form-control" name="axe" *ngIf="axes" [(ngModel)]="selectedAxe" (ngModelChange)="onRowClick()">
+                     
+                     <option *ngFor="let axe of axes['_embedded'].axes" [value]="axe.id">{{axe.axe}}</option>
+                   </select>
+             </div>
+            <button class="btn btn-success" type="submit">Ajouter</button>
+    
+        </form>
+    </div>
+    </div>
+</div>

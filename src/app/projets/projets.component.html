@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container2">
     <div class="card card-primary">
         <div class="card-header">Liste des projets</div>
         
@@ -27,14 +27,15 @@
                 <thead>
                     <tr>
                         
-                        <th>Intitule francais</th>
-                        <th>Intitule arabe</th>
-                        <th>location</th>
-                        <th>consistence</th>
-                        <th>benificiares</th>
-                        <th>delai</th>
-                        <th>cout</th>
-                        <th>dateLancement</th>
+                        <th style="width:10%">Intitulé francais</th>
+                        <!-- <th style="width:10%">Intitule arabe</th> -->
+                        <th style="width:10%">Localisation</th>
+                        <th style="width:10%">Consistence</th>
+                        <!-- <th style="width:10%">benificiares</th> -->
+                       <th style="width:5%">Delai</th>
+                       <th style="width:5%">coût</th>
+                       <th style="width:6%"> Date de lancement</th>
+                       <th style="width:7%">Actions</th>
 
                     </tr>
                 </thead>
@@ -42,12 +43,12 @@
                     <tr *ngFor="let p of projets['_embedded'].projets">
                         
                         <td>{{p.projet}}</td>
-                        <td>{{p.projet_ar}}</td>
+                        <!-- <td>{{p.projet_ar}}</td> -->
                         <td>{{p.location}}</td>
                         <td>{{p.consistence}}</td>
-                        <td>{{p.benificiares}}</td>
-                        <td>{{p.delai}}</td>
-                        <td>{{p.cout}}</td>
+                        <!-- <td>{{p.benificiares}}</td> -->
+                        <td>{{p.delai}} Ans</td>
+                        <td>{{p.cout}} MDH</td>
                         <td>{{p.dateLancement}}</td>
                         
                        

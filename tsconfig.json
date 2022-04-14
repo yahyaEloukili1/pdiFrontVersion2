@@ -5,6 +5,8 @@
   "compilerOptions": {
     "suppressImplicitAnyIndexErrors": true,
     "strictNullChecks":false,
+    "noImplicitAny": false,
+    "moduleResolution": "node",
     "strictPropertyInitialization": false,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

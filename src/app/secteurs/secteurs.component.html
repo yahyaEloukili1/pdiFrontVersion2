@@ -1,18 +1,25 @@
 <div class="container">
     <div class="card card-primary">
-        <div class="card-header">Liste des provinces</div>
+        <div class="card-header">Liste des secteurs</div>
+        <div class="col-sm-5 mt-2 mx-auto form-group">
+           Choisir axe   <select class="form-control" *ngIf="axes" [(ngModel)]="selectedAxe" (ngModelChange)="onRowClick()">
+                
+                <option *ngFor="let axe of axes['_embedded'].axes" [value]="axe.id">{{axe.axe}}</option>
+              </select>
+        </div>
         
         <div class="card-body">
             <div class="d-flex">
             <div class="d-inline-block">
                 <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
                     <div class="form-group">
-                        <label>Province</label>&nbsp;
+                        <label>secteur</label>&nbsp;
                         <input type="text" ngModel name="keyword">&nbsp;
                         <button type="submit" class="btn btn-success"><i class="fa fa-search" style="font-size:17px"></i> chercher</button>
                     </div>
                </form>
             </div>
+           
             <div class="ml-auto d-inline-block">
              
                 <button (click)="ajouter()" class="btn btn-primary">
@@ -22,34 +29,36 @@
         </div>
       
           
-            <table class="table table-bordered" *ngIf="provinces">
+            <table class="table table-bordered" *ngIf="secteurs">
                 <thead>
                     <tr>
                         <th>Id</th>
-                       <th>province fr</th>
-                        <th>province ar</th>
+                       <th>secteur fr</th>
+                        <th>secteur ar</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let p of provinces['_embedded'].provinces">
+                    <tr *ngFor="let p of secteurs['_embedded'].secteurs">
                         <td>{{p.id}}</td>
-                        <td>{{p.province}}</td>
-                        <td>{{p.province_ar}}</td>
+                        <td>{{p.secteur}}</td>
+                        <td>{{p.secteur_ar}}</td>
+                     
                         
                        
                        
                         <td>
-                            <a class="btn btn-danger" (click)="onDeleteProvince(p['_links'].self.href)"><i class="fa fa-remove" style="font-size:17px"></i> Delete</a>&nbsp;&nbsp;&nbsp;
-                            <a class="btn btn-success" (click)="onEditProvince(p)"><i class="fa fa-edit" style="font-size:17px"></i> Modifier</a>
+                            <a class="btn btn-danger" (click)="onDeleteSecteur(p['_links'].self.href)"><i class="fa fa-remove" style="font-size:17px"></i> Delete</a>&nbsp;&nbsp;&nbsp;
+                            <a class="btn btn-success" (click)="onEditSecteur(p)"><i class="fa fa-edit" style="font-size:17px"></i> Modifier</a>
                           
                         </td>
                     </tr>
                 </tbody>
               
             </table>
-            <ul *ngIf="pages" class="pagination">
+            <ul *ngIf="pages" class="pagination" [ngClass]="selected==true? 'd-none' : 'd-flex'">
                 <li [ngClass]="i==currentPage ? 'page-item active' : 'page-item'" *ngFor="let p of pages;let i = index">
-                    <a class="clickable page-link" (click)="onPageProvince(i)">{{i}}</a>
+                    <a class="clickable page-link" (click)="onPageSecteur(i)">{{i}}</a>
                 </li>
             </ul>
          

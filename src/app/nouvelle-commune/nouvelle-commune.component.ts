@@ -23,24 +23,13 @@ selectedProvince: number
   onSaveCommune(f:NgForm){
   
     f.value.province = `${this.pdiService.host}/provinces/${this.selectedProvince}`
-  
+    console.log(f.value)
     this.pdiService.addResource("communes",f.value).subscribe(data=>{
       f.reset()
       console.log(data)
           },err=>{
             console.log(err)
           })
-    // this.pdiService.getOneResourceById("provinces",f.value.province).subscribe(data=>{
-    //   delete data['_links']
-     
-    // })
-    
-//     this.pdiService.addResource("communes",f.value).subscribe(data=>{
-// console.log(data)
-// f.reset()
-//     },err=>{
-//       console.log(err)
-//     })
 }
 onGetProvinces(){
   this.pdiService.getResourceAll("provinces").subscribe(data=>{

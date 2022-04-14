@@ -26,6 +26,10 @@ import { EditComponentComponent } from './edit-component/edit-component.componen
 import { AxesComponent } from './axes/axes.component';
 import { NouveauAxeComponent } from './nouveau-axe/nouveau-axe.component';
 import { ProjetsComponent } from './projets/projets.component';
+import { NewProjetComponent } from './new-projet/new-projet.component';
+import { SecteursComponent } from './secteurs/secteurs.component';
+import { NewSecteurComponent } from './new-secteur/new-secteur.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +48,10 @@ import { ProjetsComponent } from './projets/projets.component';
     EditComponentComponent,
     AxesComponent,
     NouveauAxeComponent,
-    ProjetsComponent
+    ProjetsComponent,
+    NewProjetComponent,
+    SecteursComponent,
+    NewSecteurComponent
   ],
   imports: [
     BrowserModule,

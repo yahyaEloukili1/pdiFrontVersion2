@@ -52,7 +52,7 @@ this.onGetAxes()
 
   chercherAxes(){
   
-    this.pdiService.getResourceByKeywordAxe("provinces",this.currentPage,this.size,this.currentKeyword).subscribe(data=>{
+    this.pdiService.getResourceByKeywordAxe("axes",this.currentPage,this.size,this.currentKeyword).subscribe(data=>{
       this.axes = data;
      
      this.totalPages = data['page'].totalPages
