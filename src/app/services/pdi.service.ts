@@ -7,7 +7,9 @@ import { MO } from '../models/MO';
 import { Projet } from '../models/Projet';
 import { Province } from '../models/Province';
 import { Secteur } from '../models/Secteur';
+import { SituationEtude } from '../models/SituationEtude';
 import { Statut } from '../models/Statut';
+import { TauxAvancement } from '../models/TauxAvancement';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +50,15 @@ getResourceCommuneAll(resource: String):Observable<Commune[]>{
 }
 getResourceStatutAll(resource: String):Observable<Statut[]>{
   return this.http.get<Statut[]>(`${this.host}/${resource}`);
+}
+getResourceProvinceAll(resource: String):Observable<Province[]>{
+  return this.http.get<Province[]>(`${this.host}/${resource}`);
+}
+getResourceTauxAvancementAll(resource: String):Observable<TauxAvancement[]>{
+  return this.http.get<TauxAvancement[]>(`${this.host}/${resource}`);
+}
+getResourceSituaionEtudeAll(resource: String):Observable<SituationEtude[]>{
+  return this.http.get<SituationEtude[]>(`${this.host}/${resource}`);
 }
 getResourceAxeAll(resource: String):Observable<Axe[]>{
   return this.http.get<Axe[]>(`${this.host}/${resource}`);

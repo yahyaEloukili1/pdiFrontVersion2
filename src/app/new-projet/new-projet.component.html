@@ -32,6 +32,12 @@
                    </select>
              </div>
              <div class="form-group">
+                Province   <select class="form-control" name="province" *ngIf="provinces" [(ngModel)]="selectedProvince" (ngModelChange)="onRowClick()">
+                    
+                    <option *ngFor="let province of provinces['_embedded'].provinces" [value]="province.id">{{province.province}}</option>
+                  </select>
+            </div>
+             <div class="form-group">
                  Statut   <select class="form-control" name="statut" *ngIf="statuts" [(ngModel)]="selectedStatut" (ngModelChange)="onRowClick()">
                      
                      <option *ngFor="let statut of statuts['_embedded'].statuts" [value]="statut.id">{{statut.statut}}</option>
@@ -43,6 +49,24 @@
                      <option *ngFor="let maitreOuvrage of mos['_embedded'].maitreOuvrages" [value]="maitreOuvrage.id">{{maitreOuvrage.maitreOuvrage}}</option>
                    </select>
              </div>
+             <div class="form-group">
+                axe   <select class="form-control" name="axe" *ngIf="axes" [(ngModel)]="selectedAxe" (ngModelChange)="onRowClick()">
+                    
+                    <option *ngFor="let axe of axes['_embedded'].axes" [value]="axe.id">{{axe.axe}}</option>
+                  </select>
+            </div>
+            <div class="form-group">
+                situationEtude   <select class="form-control" name="situationEtude" *ngIf="situationEtudes" [(ngModel)]="selectedSituationEtude" (ngModelChange)="onRowClick()">
+                    
+                    <option *ngFor="let situationEtude of situationEtudes['_embedded'].situationEtudes" [value]="situationEtude.id">{{situationEtude.situation}}</option>
+                  </select>
+            </div>
+            <div class="form-group">
+                TauxAvancement   <select class="form-control" name="tauxAvancement" *ngIf="tauxAvancements" [(ngModel)]="selectedTauxAvancement" (ngModelChange)="onRowClick()">
+                    
+                    <option *ngFor="let tauxAvancement of tauxAvancements['_embedded'].tauxAvancements" [value]="tauxAvancement.id">{{tauxAvancement.tauxAvancement}}</option>
+                  </select>
+            </div>
             <div class="form-group">
                 <label  class="control-label">
                     Consistence

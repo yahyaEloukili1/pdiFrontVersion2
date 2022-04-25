@@ -24,8 +24,8 @@ export class CommunesComponent implements OnInit {
   constructor(private pdiService:PdiService, private router: Router) { }
 
   ngOnInit(): void {
-this.onGetCommunes()
-this.onGetProvinces()
+      this.onGetCommunes()
+      this.onGetProvinces()
   }
   onRowClick(){
     this.pdiService.getResourceCommuneAll("provinces/"+this.selectedProvince+"/communes").subscribe(data=>{
@@ -68,8 +68,7 @@ this.onGetProvinces()
   onChercher(form :any){
       this.currentPage = 0;
       this.currentKeyword = form.keyword;
-      window.location.reload()
-      console.log("chrcher")
+    
       this.selected = false
       this.chercherCommunes()
   }

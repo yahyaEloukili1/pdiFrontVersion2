@@ -29,6 +29,8 @@ import { ProjetsComponent } from './projets/projets.component';
 import { NewProjetComponent } from './new-projet/new-projet.component';
 import { SecteursComponent } from './secteurs/secteurs.component';
 import { NewSecteurComponent } from './new-secteur/new-secteur.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardHelper } from './dashboard.helper';
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import { NewSecteurComponent } from './new-secteur/new-secteur.component';
     ProjetsComponent,
     NewProjetComponent,
     SecteursComponent,
-    NewSecteurComponent
+    NewSecteurComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { NewSecteurComponent } from './new-secteur/new-secteur.component';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+
     MatSidenavModule
   ],
   providers: [],

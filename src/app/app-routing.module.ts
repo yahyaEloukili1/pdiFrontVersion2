@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AxesComponent } from './axes/axes.component';
 import { CommunesComponent } from './communes/communes.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditComponentComponent } from './edit-component/edit-component.component';
 import { EditMoComponent } from './edit-mo/edit-mo.component';
 import { EditProvinceComponent } from './edit-province/edit-province.component';
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path: "new-statut",component: NouveauStatutComponent},
   {path: "new-axe",component: NouveauAxeComponent},
   {path: "new-projet",component: NewProjetComponent},
+  {path: "dashboard",component: DashboardComponent},
   {path: "edit-mo/:id",component: EditMoComponent},
   {path: "edit-statut/:id",component: EditStatutComponent},
   {path: "", redirectTo : "/projets", pathMatch: 'full'}
