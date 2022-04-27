@@ -48,6 +48,9 @@ getResourceSecteur(resource: String,page:number,size:number):Observable<Secteur[
 getResourceCommuneAll(resource: String):Observable<Commune[]>{
   return this.http.get<Commune[]>(`${this.host}/${resource}`);
 }
+getResourceProjetAll(resource: String):Observable<Projet[]>{
+  return this.http.get<Projet[]>(`${this.host}/${resource}`);
+}
 getResourceStatutAll(resource: String):Observable<Statut[]>{
   return this.http.get<Statut[]>(`${this.host}/${resource}`);
 }
@@ -123,15 +126,32 @@ getOneResourceById(resource:string,id:number):Observable<Province>{
 getOneResourceMO(url:string):Observable<MO>{
   return this.http.get<MO>(url)
  }
+ getOneResourceSituation(url:string):Observable<SituationEtude>{
+  return this.http.get<SituationEtude>(url)
+ }
+ getOneResourceAxe(url:string):Observable<Axe>{
+  return this.http.get<Axe>(url)
+ }
+ getOneResourceSecteur(url:string):Observable<Secteur>{
+  return this.http.get<Secteur>(url)
+ }
+ getOneResourceProjet(url:string):Observable<Projet>{
+  return this.http.get<Projet>(url)
+ }
  getOneResourceCommune(url:string):Observable<Commune>{
   return this.http.get<Commune>(url)
  }
  getOneResourceStatut(url:string):Observable<Statut>{
   return this.http.get<Statut>(url)
  }
+ getOneResourcetaux(url:string):Observable<TauxAvancement>{
+   let a = 4;
+  return this.http.get<TauxAvancement>(url) 
+
+ }
 updateResource(url:string,data:any){
   console.log(url)
-  return this.http.put(url,data)
+  return this.http.patch(url,data)
  }
 
 }
