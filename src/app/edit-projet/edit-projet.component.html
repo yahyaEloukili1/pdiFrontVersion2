@@ -6,13 +6,13 @@
             Nouveau projet
         </div>
         <div class="card-body">
-        <form #f="ngForm" (ngSubmit)="onSaveProjet(f)">
+        <form #f="ngForm" (ngSubmit)="onUpdateCommune(f.value)" *ngIf="currentProjet">
            
                     <div class="form-group">
                         <label  class="control-label">
                             Intitulé en francais
                         </label>
-                        <input type="text" name="projet" ngModel  ngModel class="form-control">
+                        <input type="text" name="projet" ngModel  [(ngModel)]="currentProjet.projet" class="form-control">
                     </div>
               
              
@@ -20,7 +20,7 @@
                         <label  class="control-label">
                             Intitulé en arabe
                         </label>
-                        <input type="text" name="projet_ar" ngModel class="form-control">
+                        <input type="text" name="projet_ar" ngModel [(ngModel)]="currentProjet.projet_ar" class="form-control">
                     </div>
                 
            
@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        Commune   <select class="form-control" name="commune" *ngIf="communes" [(ngModel)]="selectedCommune" (ngModelChange)="onRowClick()">
+                        Commune   <select class="form-control" name="commune" *ngIf="communes"  [ngModel]="communeId"   (ngModelChange)="onRowClickCommune($event)" >
                             
                             <option *ngFor="let commune of communes['_embedded'].communes" [value]="commune.id">{{commune.commune}}</option>
                           </select>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        Province   <select class="form-control" name="province" *ngIf="provinces" [(ngModel)]="selectedProvince" (ngModelChange)="onRowClick()">
+                        Province   <select class="form-control" name="province" *ngIf="provinces" [(ngModel)]="selectedProvince" [ngModel]="provinceId"   (ngModelChange)="onRowClick($event)">
                             
                             <option *ngFor="let province of provinces['_embedded'].provinces" [value]="province.id">{{province.province}}</option>
                           </select>
@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        Statut   <select class="form-control" name="statut" *ngIf="statuts" [(ngModel)]="selectedStatut" (ngModelChange)="onRowClick()">
+                        Statut   <select class="form-control" name="statut" *ngIf="statuts"  [ngModel]="statutId"   (ngModelChange)="onRowClickStatut($event)" >
                             
                             <option *ngFor="let statut of statuts['_embedded'].statuts" [value]="statut.id">{{statut.statut}}</option>
                           </select>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        Maitre d'ouvrage:   <select class="form-control" name="maitreOuvrage" *ngIf="mos" [(ngModel)]="selectedMaitreOuvrage" (ngModelChange)="onRowClick()">
+                        Maitre d'ouvrage:   <select class="form-control" name="maitreOuvrage" *ngIf="mos" [(ngModel)]="selectedMaitreOuvrage" [ngModel]="moId"   (ngModelChange)="onRowClickMO($event)" >
                             
                             <option *ngFor="let maitreOuvrage of mos['_embedded'].maitreOuvrages" [value]="maitreOuvrage.id">{{maitreOuvrage.maitreOuvrage}}</option>
                           </select>
@@ -71,7 +71,7 @@
             <div class="row">
                 <div class="col">
                     <div class="mt-2  form-group">
-                         Axe   <select class="form-control" name="axes" *ngIf="axes" [(ngModel)]="selectedAxe">
+                         Axe   <select class="form-control" name="axes" *ngIf="axes" [(ngModel)]="selectedAxe" [ngModel]="axeId"   (ngModelChange)="onRowClickAxe($event)">
                              
                              <option *ngFor="let axe of axes['_embedded'].axes" [value]="axe.id">{{axe.axe}}</option>
                            </select>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="col">
                     <div class="mt-2  form-group">
-                         Secteur   <select class="form-control" name="secteurs" *ngIf="secteurs" [(ngModel)]="selectedSecteur">
+                         Secteur   <select class="form-control" name="secteurs" *ngIf="secteurs"  [ngModel]="secteurId"   (ngModelChange)="onRowClickSecteur($event)">
                              
                              <option *ngFor="let secteur of secteurs['_embedded'].secteurs" [value]="secteur.id">{{secteur.secteur}}</option>
                            </select>
@@ -92,7 +92,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        Situation d'étude   <select class="form-control" name="situationEtude" *ngIf="situationEtudes" [(ngModel)]="selectedSituationEtude" (ngModelChange)="onRowClick()">
+                        Situation d'étude   <select class="form-control" name="situationEtude" *ngIf="situationEtudes"  [ngModel]="situationId"   (ngModelChange)="onRowClickSituation($event)" >
                             
                             <option *ngFor="let situationEtude of situationEtudes['_embedded'].situationEtudes" [value]="situationEtude.id">{{situationEtude.situation}}</option>
                           </select>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        Taux d'Avancement   <select class="form-control" name="tauxAvancement" *ngIf="tauxAvancements" [(ngModel)]="selectedTauxAvancement" (ngModelChange)="onRowClick()">
+                        Taux d'Avancement   <select class="form-control" name="tauxAvancement" *ngIf="tauxAvancements">
                             
                             <option *ngFor="let tauxAvancement of tauxAvancements['_embedded'].tauxAvancements" [value]="tauxAvancement.id">{{tauxAvancement.tauxAvancement}}</option>
                           </select>
@@ -114,7 +114,7 @@
                     <label  class="control-label">
                         Consistence
                     </label>
-                    <input type="text" name="consistence" ngModel class="form-control">
+                    <input type="text" name="consistence" [(ngModel)]="currentProjet.consistence" ngModel class="form-control">
                 </div>
               </div>
               <div class="col">
@@ -122,7 +122,7 @@
                     <label  class="control-label">
                         Delai
                     </label>
-                    <input type="number" name="delai" ngModel class="form-control">
+                    <input type="number" name="delai" ngModel [(ngModel)]="currentProjet.delai" class="form-control">
                 </div>
               </div>
           </div>
@@ -135,7 +135,7 @@
                     <label  class="control-label">
                         Date lancement
                     </label>
-                    <input type="date" name="dateLancement" ngModel class="form-control">
+                    <input type="date" name="dateLancement" ngModel [(ngModel)]="currentProjet.dateLancement" class="form-control">
                 </div>
             
               </div>
@@ -145,7 +145,7 @@
                 <label  class="control-label">
                     Cout
                 </label>
-                <input type="number" name="cout" ngModel class="form-control">
+                <input type="number" name="cout" ngModel [(ngModel)]="currentProjet.cout" class="form-control">
             </div>
               </div>
           </div>
@@ -153,15 +153,13 @@
             <label  class="control-label">
                 Benificiares
             </label>
-            <input type="text" name="benificiares" ngModel class="form-control">
+            <input type="text" name="benificiares" ngModel [(ngModel)]="currentProjet.benificiares" class="form-control">
         </div>
            
         <div class="form-group">
             <label for="comment">Partenaires:</label>
-            <textarea class="form-control" name="partenaireContribution" ngModel rows="5" id="comment"></textarea>
+            <textarea class="form-control" name="partenaireContribution"  ngModel [(ngModel)]="currentProjet.partenaireContribution" rows="5" id="comment"></textarea>
           </div>
-          
-          
             <button class="btn btn-success" type="submit">Ajouter</button>
     
         </form>

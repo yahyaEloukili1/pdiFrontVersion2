@@ -31,6 +31,7 @@ import { SecteursComponent } from './secteurs/secteurs.component';
 import { NewSecteurComponent } from './new-secteur/new-secteur.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardHelper } from './dashboard.helper';
+import { EditProjetComponent } from './edit-projet/edit-projet.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { DashboardHelper } from './dashboard.helper';
     SecteursComponent,
     NewSecteurComponent,
     DashboardComponent,
+    EditProjetComponent,
   ],
   imports: [
     BrowserModule,

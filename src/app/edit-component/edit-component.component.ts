@@ -15,9 +15,10 @@ export class EditComponentComponent implements OnInit {
   provinces: Province[]
   selectedProvince: number
   url: string
+  d:number
     constructor(private router:Router,private activatedRoute: ActivatedRoute,private pdiService:PdiService) { }
-    onRowClick(){
-
+    onRowClick(e){
+        this.selectedProvince = e
     }
     ngOnInit(): void {
       this.onGetProvinces()
@@ -25,11 +26,24 @@ export class EditComponentComponent implements OnInit {
       this.pdiService.getOneResourceCommune(this.url).subscribe(data=>{
         this.currentCommune = data;
         console.log(this.currentCommune,"$$$$$$$$$$$$$$$")
+        this.getId(this.currentCommune._links.province.href)
       },err=>{
         console.log(err)
       })
       console.log(this.url);
     }
+    getId(url){
+      let u = url.slice(0,-13)
+      console.log(u,'11111111111111&')
+      this.pdiService.getOneResource(u).subscribe(data=>{
+     this.d = data.id
+     console.log(data)
+      })
+
+   
+   
+    }
+    
     onGetProvinces(){
       this.pdiService.getResourceAll("provinces").subscribe(data=>{
        this.provinces = data;
@@ -39,8 +53,14 @@ export class EditComponentComponent implements OnInit {
       })
     
     }
+  
     onUpdateCommune(value: any){
+      if(this.selectedProvince)
       value.province = `${this.pdiService.host}/provinces/${this.selectedProvince}`
+      else{
+        value.province = `${this.pdiService.host}/provinces/${this.d}`
+      }
+      console.log(value,"lllllllllllllllllllll")
       console.log(value)
       this.pdiService.updateResource(this.url,value).subscribe(data=>{
         console.log(data,"**********************")

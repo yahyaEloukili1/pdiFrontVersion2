@@ -24,17 +24,20 @@ export class CommunesComponent implements OnInit {
   constructor(private pdiService:PdiService, private router: Router) { }
 
   ngOnInit(): void {
-      this.onGetCommunes()
-      this.onGetProvinces()
+     this.onGetCommunes()
+     this.onGetProvinces()
   }
   onRowClick(){
     this.pdiService.getResourceCommuneAll("provinces/"+this.selectedProvince+"/communes").subscribe(data=>{
       this.communes = data;
       this.selected = true
+      
      console.log(data) 
     })
   }
-
+  reset(){
+    this.selectedProvince = {} as Province
+  }
   ajouter(){
     this.router.navigateByUrl('/new-commune');
   }
@@ -53,19 +56,17 @@ export class CommunesComponent implements OnInit {
   onGetProvinces(){
     this.pdiService.getResourceAll("provinces").subscribe(data=>{
      this.provinces = data;
-     console.log(data)
-    this.totalPages = data['page'].totalPages
-    this.pages = new Array<number>(this.totalPages);
+
     },err=>{
       console.log(err)
     })
-
   }
   onPageCommune(i:number){
     this.currentPage = i;
    this.chercherCommunes()
   }
   onChercher(form :any){
+    this.reset()
       this.currentPage = 0;
       this.currentKeyword = form.keyword;
     

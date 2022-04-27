@@ -4,7 +4,7 @@
         <div class="col-sm-5 mt-2 mx-auto form-group">
            Choisir axe   <select class="form-control" *ngIf="axes" [(ngModel)]="selectedAxe" (ngModelChange)="onRowClick()">
                 
-                <option *ngFor="let axe of axes['_embedded'].axes" [value]="axe.id">{{axe.axe}}</option>
+                <option *ngFor="let axe of axes['_embedded'].axes" [ngValue]="axe.id">{{axe.axe}}</option>
               </select>
         </div>
         
@@ -61,9 +61,6 @@
                     <a class="clickable page-link" (click)="onPageSecteur(i)">{{i}}</a>
                 </li>
             </ul>
-         
-          
-           
         </div>
     </div>
 </div>

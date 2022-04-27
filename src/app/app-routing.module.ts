@@ -5,6 +5,7 @@ import { CommunesComponent } from './communes/communes.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditComponentComponent } from './edit-component/edit-component.component';
 import { EditMoComponent } from './edit-mo/edit-mo.component';
+import { EditProjetComponent } from './edit-projet/edit-projet.component';
 import { EditProvinceComponent } from './edit-province/edit-province.component';
 import { EditStatutComponent } from './edit-statut/edit-statut.component';
 import { MaitresOuvragesComponent } from './maitres-ouvrages/maitres-ouvrages.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path: "new-projet",component: NewProjetComponent},
   {path: "dashboard",component: DashboardComponent},
   {path: "edit-mo/:id",component: EditMoComponent},
+  {path: "edit-projet/:id",component: EditProjetComponent},
   {path: "edit-statut/:id",component: EditStatutComponent},
   {path: "", redirectTo : "/projets", pathMatch: 'full'}
 ];

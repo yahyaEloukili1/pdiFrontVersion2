@@ -55,8 +55,6 @@ this.onGetAxes()
     this.pdiService.getResourceAxeAll("axes").subscribe(data=>{
      this.axes = data;
      console.log(data)
-    this.totalPages = data['page'].totalPages
-    this.pages = new Array<number>(this.totalPages);
     },err=>{
       console.log(err)
     })
@@ -69,8 +67,9 @@ this.onGetAxes()
   onChercher(form :any){
       this.currentPage = 0;
       this.currentKeyword = form.keyword;
-      window.location.reload()
+      // window.location.reload()
       console.log("chrcher")
+      this.reset()
       this.selected = false
       this.checrherSecteurs()
   }
@@ -91,6 +90,9 @@ this.onGetAxes()
     console.log(p)
       let url = p['_links'].self.href;
       this.router.navigateByUrl("/edit-secteur/"+btoa(url))
+  }
+  reset(){
+    this.selectedAxe = {id: 8, axe: "-"} as Axe
   }
   onDeleteSecteur(url:string){
     if(confirm('Etes vous sur de vouloir supprimer cette secteur ?')){

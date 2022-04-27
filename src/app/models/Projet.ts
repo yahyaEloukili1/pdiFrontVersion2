@@ -10,6 +10,8 @@ export interface Projet{
     delai: number
     cout: number
     dateLancement: Date
+    partenaireContribution: Text
+    _links
 
    
 

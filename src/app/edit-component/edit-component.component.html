@@ -20,7 +20,7 @@
                 <input type="text" name="commune_ar" ngModel [(ngModel)]="currentCommune.commune_ar" class="form-control">
             </div>
             <div class="form-group">
-                Choisir province   <select class="form-control" name="province" *ngIf="provinces" [(ngModel)]="selectedProvince" (ngModelChange)="onRowClick()">
+                Choisir province   <select class="form-control" name="province" *ngIf="provinces" [ngModel]="d" (ngModel)="selectedProvince"    (ngModelChange)="onRowClick($event)">
                      
                      <option *ngFor="let province of provinces['_embedded'].provinces" [value]="province.id">{{province.province}}</option>
                    </select>
