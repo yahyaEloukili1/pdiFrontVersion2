@@ -62,15 +62,22 @@ export class NewProjetComponent implements OnInit {
       f.value.tauxAvancement = `${this.pdiService.host}/tauxAvancements/${this.selectedTauxAvancement}`
       console.log(f.value.tauxAvancement,"wqqqqqqqqqqqqqqqqqqqqqq")
       console.log(f.value.maitreOuvrage,"$$$$$$$$$$$$$$$$")
+      if(!f.value.projet)
+        alert("Veuillez saisir l'intitulé du projet !")
+        else{
       this.pdiService.addResource("projets",f.value).subscribe(data=>{
        
         
         console.log(f.value)
+        alert('Projet ajouté avec succés')
         f.reset()
             },err=>{
-              console.log(err)
+              if(err.error.cause.message.startsWith("Failed to convert from type")){
+                alert("Veuillez saisir les champs obligatoires !")
+              }
+              
             })
-   
+          }
   }
   onGetCommunes(){
     this.pdiService.getResourceByKeywordCommune2("communes",100000,"").subscribe(data=>{
