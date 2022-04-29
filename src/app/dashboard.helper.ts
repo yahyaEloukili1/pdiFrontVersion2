@@ -43,7 +43,9 @@ export class DashboardHelper{
          this.nombres3 =  this.nombres.slice(0,this.nombres.length)
          if(this.myChart!=null)
          this.myChart.destroy()
+       
          var data2= this.nombres.slice(0,this.nombres.length);
+      
          var labesl2 = this.communes
       //    for (let i = 0; i <= data2.length; i++){
       //     if (data2[i] === null) {
@@ -101,6 +103,7 @@ export class DashboardHelper{
        this.communes[i] =  this.result[i].commune
     
      }
+     console.log(this.communes,"$$$$$$$$$$$$$$$$$$$$$$$$$$")
     
     
      

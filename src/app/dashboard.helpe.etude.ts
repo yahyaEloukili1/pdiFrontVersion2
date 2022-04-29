@@ -26,12 +26,11 @@ export class DashboardHelperEtude{
         (async()=>{
     
       const result = await  this.pdiService.getResourceAll('situationEtudes/'+this.result[i].id+'/projets').toPromise()
-      console.log("B", result)
+  
     
     })()
         this.pdiService.getResourceAll('situationEtudes/'+this.result[i].id+'/projets').subscribe(result2=>{
-          console.log(this.result[i].id,"wwwwwwwwwwwwwwwwwwwwww")
-           console.log(result2['_embedded'].projets.length,"ùùùùùùùùùù") 
+       
          
           
                 this.nombres[i] = result2['_embedded'].projets.length
@@ -42,7 +41,7 @@ export class DashboardHelperEtude{
          this.nombres3 =  this.nombres.slice(0,this.nombres.length)
          if(this.myChart!=null)
          this.myChart.destroy()
-         console.log(this.nombres,"popopopo")
+       
          var data2= this.nombres.slice(0,this.nombres.length);
          var labesl2 = this.situationEtudes
      
@@ -83,7 +82,7 @@ export class DashboardHelperEtude{
             responsive: false,
           }
        });
-       console.log(this.nombres3)
+ 
           })    
           
       }
@@ -96,7 +95,7 @@ export class DashboardHelperEtude{
     
      }
     
-     console.log(this.situationEtudes,'$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+   
      
     
     })()

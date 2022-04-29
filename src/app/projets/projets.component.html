@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col">
                     <div class="mt-2  form-group">
-                        projets par province   <select class="form-control" *ngIf="provinces" [(ngModel)]="selectedProvince" (ngModelChange)="onRowClick()">
+                        Projets par province   <select class="form-control" *ngIf="provinces" [(ngModel)]="selectedProvince" (ngModelChange)="onRowClick()">
                              
                              <option *ngFor="let province of provinces['_embedded'].provinces" [value]="province.id">{{province.province}}</option>
                            </select>
@@ -15,7 +15,7 @@
                 </div>
                 <div class="col">
                     <div class="mt-2  form-group">
-                        projets par commune   <select class="form-control" *ngIf="communes" [(ngModel)]="selectedCommune" (ngModelChange)="onRowClickCommune()">
+                        Projets par commune   <select class="form-control" *ngIf="communes" [(ngModel)]="selectedCommune" (ngModelChange)="onRowClickCommune()">
                              
                              <option *ngFor="let commune of communes['_embedded'].communes" [value]="commune.id">{{commune.commune}}</option>
                            </select>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col">
                     <div class="mt-2  form-group">
-                        projets par statut   <select class="form-control" *ngIf="statuts" [(ngModel)]="selectedStatut" (ngModelChange)="onRowClickStatut()">
+                        Projets par statut   <select class="form-control" *ngIf="statuts" [(ngModel)]="selectedStatut" (ngModelChange)="onRowClickStatut()">
                              
                              <option *ngFor="let statut of statuts['_embedded'].statuts" [value]="statut.id">{{statut.statut}}</option>
                            </select>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="col">
                     <div class="mt-2  form-group">
-                        projets par axe   <select class="form-control" *ngIf="axes" [(ngModel)]="selectedAxe" (ngModelChange)="onRowClickAxe()">
+                        Projets par axe   <select class="form-control" *ngIf="axes" [(ngModel)]="selectedAxe" (ngModelChange)="onRowClickAxe()">
                              
                              <option *ngFor="let axe of axes['_embedded'].axes" [value]="axe.id">{{axe.axe}}</option>
                            </select>
@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        projets par secteur   <select class="form-control" *ngIf="secteurs" [(ngModel)]="selectedSecteur" (ngModelChange)="onRowClickSecteur()">
+                        Projets par secteur   <select class="form-control" *ngIf="secteurs" [(ngModel)]="selectedSecteur" (ngModelChange)="onRowClickSecteur()">
                              
                              <option *ngFor="let secteur of secteurs['_embedded'].secteurs" [value]="secteur.id">{{secteur.secteur}}</option>
                            </select>
@@ -56,7 +56,7 @@
           
                 <div class="col">
                     <div class="form-group">
-                        projets par  situationEtude   <select class="form-control" name="situationEtude" *ngIf="situationEtudes" [(ngModel)]="selectedSituationEtude" (ngModelChange)="onRowClickSituationEtude()">
+                        Projets par  situation d'étude   <select class="form-control" name="situationEtude" *ngIf="situationEtudes" [(ngModel)]="selectedSituationEtude" (ngModelChange)="onRowClickSituationEtude()">
                             
                             <option *ngFor="let situationEtude of situationEtudes['_embedded'].situationEtudes" [value]="situationEtude.id">{{situationEtude.situation}}</option>
                           </select>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        projets par  TauxAvancement   <select class="form-control" name="tauxAvancement" *ngIf="tauxAvancements" [(ngModel)]="selectedTauxAvancement" (ngModelChange)="onRowClickTauxAvancement()">
+                        Projets par  Taux d'avancement   <select class="form-control" name="tauxAvancement" *ngIf="tauxAvancements" [(ngModel)]="selectedTauxAvancement" (ngModelChange)="onRowClickTauxAvancement()">
                             
                             <option *ngFor="let tauxAvancement of tauxAvancements['_embedded'].tauxAvancements" [value]="tauxAvancement.id">{{tauxAvancement.tauxAvancement}}</option>
                           </select>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        Maitre d'ouvrage:   <select class="form-control" name="maitreOuvrage" *ngIf="mos" [(ngModel)]="selectedMaitreOuvrage" (ngModelChange)="onRowClickMO()">
+                        Projets par maitre d'oeuvrage:   <select class="form-control" name="maitreOuvrage" *ngIf="mos" [(ngModel)]="selectedMaitreOuvrage" (ngModelChange)="onRowClickMO()">
                             
                             <option *ngFor="let maitreOuvrage of mos['_embedded'].maitreOuvrages" [value]="maitreOuvrage.id">{{maitreOuvrage.maitreOuvrage}}</option>
                           </select>

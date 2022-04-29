@@ -26,12 +26,11 @@ export class DashboardHelperTauxAvancement{
         (async()=>{
     
       const result = await  this.pdiService.getResourceAll('tauxAvancements/'+this.result[i].id+'/projets').toPromise()
-      console.log("B", result)
+     
     
     })()
         this.pdiService.getResourceAll('tauxAvancements/'+this.result[i].id+'/projets').subscribe(result2=>{
-          console.log(this.result[i].id,"wwwwwwwwwwwwwwwwwwwwww")
-           console.log(result2['_embedded'].projets.length,"ùùùùùùùùùù") 
+ 
          
           
                 this.nombres[i] = result2['_embedded'].projets.length
@@ -42,7 +41,7 @@ export class DashboardHelperTauxAvancement{
          this.nombres3 =  this.nombres.slice(0,this.nombres.length)
          if(this.myChart!=null)
          this.myChart.destroy()
-         console.log(this.nombres,"popopopo")
+    
          var data2= this.nombres.slice(0,this.nombres.length);
          var labesl2 = this.tauxAvancements
      
@@ -85,7 +84,7 @@ export class DashboardHelperTauxAvancement{
               }
           }
         });
-       console.log(this.nombres3)
+  
           })    
           
       }

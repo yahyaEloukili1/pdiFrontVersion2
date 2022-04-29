@@ -73,7 +73,7 @@ export class NewProjetComponent implements OnInit {
    
   }
   onGetCommunes(){
-    this.pdiService.getResourceCommuneAll("communes").subscribe(data=>{
+    this.pdiService.getResourceByKeywordCommune2("communes",100000,"").subscribe(data=>{
  
      this.communes = data;
      console.log(data)
@@ -114,7 +114,7 @@ export class NewProjetComponent implements OnInit {
   
   }
   onGetAxes(){
-    this.pdiService.getResourceAxeAll("axes").subscribe(data=>{
+    this.pdiService.getResourceByKeywordAxe2("axes",100000,"").subscribe(data=>{
       console.log(data,"*****************")
      this.axes = data;
      console.log(data)
@@ -124,7 +124,7 @@ export class NewProjetComponent implements OnInit {
   
   }
   onGetSecteurs(){
-    this.pdiService.getResourceSecteurAll("secteurs").subscribe(data=>{
+    this.pdiService.getResourceByKeywordSecteur2("secteurs",100000,"").subscribe(data=>{
       console.log(data,"*****************")
      this.secteurs = data;
      console.log(data)
@@ -144,7 +144,7 @@ export class NewProjetComponent implements OnInit {
   
   }
   onGetMOS(){
-    this.pdiService.getResourceMOAll("maitreOuvrages").subscribe(data=>{
+    this.pdiService.getResourceByKeywordMO2("maitreOuvrages",100000,"").subscribe(data=>{
     
      this.mos = data;
      console.log(data)

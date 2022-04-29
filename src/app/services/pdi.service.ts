@@ -96,9 +96,16 @@ addResourceSecteur(resource: string,value:any):Observable<Secteur>{
 getResourceByKeywordSecteur(resource: String,page:number,size:number,mc:string):Observable<Secteur[]>{
   return this.http.get<Secteur[]>(`${this.host}/${resource}/search/bySecteurPage?mc=${mc}&page=${page}&size=${size}`);
 }
+getResourceByKeywordSecteur2(resource: String,size:number,mc:string):Observable<Secteur[]>{
+  return this.http.get<Secteur[]>(`${this.host}/${resource}/search/bySecteurPage?mc=${mc}&size=${size}`);
+}
 getResourceByKeywordMO(resource: String,page:number,size:number,mc:string):Observable<MO[]>{
   console.log(`${this.host}/${resource}/search/byMaitreOuvragePage?mc=${mc}&page=${page}&size=${size}`)
   return this.http.get<MO[]>(`${this.host}/${resource}/search/byMaitreOuvragePage?mc=${mc}&page=${page}&size=${size}`);
+}
+getResourceByKeywordMO2(resource: String,size:number,mc:string):Observable<MO[]>{
+
+  return this.http.get<MO[]>(`${this.host}/${resource}/search/byMaitreOuvragePage?mc=${mc}&size=${size}`);
 }
 getResourceByKeywordProjet(resource: String,page:number,size:number,mc:string):Observable<Projet[]>{
 
@@ -107,8 +114,14 @@ getResourceByKeywordProjet(resource: String,page:number,size:number,mc:string):O
 getResourceByKeywordCommune(resource: String,page:number,size:number,mc:string):Observable<Commune[]>{
   return this.http.get<Commune[]>(`${this.host}/${resource}/search/byCommunePage?mc=${mc}&page=${page}&size=${size}`);
 }
+getResourceByKeywordCommune2(resource: String,size:number,mc:string):Observable<Commune[]>{
+  return this.http.get<Commune[]>(`${this.host}/${resource}/search/byCommunePage?mc=${mc}&size=${size}`);
+}
 getResourceByKeywordAxe(resource: String,page:number,size:number,mc:string):Observable<Axe[]>{
   return this.http.get<Axe[]>(`${this.host}/${resource}/search/byAxePage?mc=${mc}&page=${page}&size=${size}`);
+}
+getResourceByKeywordAxe2(resource: String,size:number,mc:string):Observable<Axe[]>{
+  return this.http.get<Axe[]>(`${this.host}/${resource}/search/byAxePage?mc=${mc}&size=${size}`);
 }
 getResourceByKeywordStatut(resource: String,page:number,size:number,mc:string):Observable<Statut[]>{
   return this.http.get<Statut[]>(`${this.host}/${resource}/search/byStatutPage?mc=${mc}&page=${page}&size=${size}`);

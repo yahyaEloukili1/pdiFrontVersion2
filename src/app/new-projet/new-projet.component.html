@@ -61,7 +61,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        Maitre d'ouvrage:   <select class="form-control" name="maitreOuvrage" *ngIf="mos" [(ngModel)]="selectedMaitreOuvrage" (ngModelChange)="onRowClick()">
+                        Maitre d'oeuvrage:   <select class="form-control" name="maitreOuvrage" *ngIf="mos" [(ngModel)]="selectedMaitreOuvrage" (ngModelChange)="onRowClick()">
                             
                             <option *ngFor="let maitreOuvrage of mos['_embedded'].maitreOuvrages" [value]="maitreOuvrage.id">{{maitreOuvrage.maitreOuvrage}}</option>
                           </select>

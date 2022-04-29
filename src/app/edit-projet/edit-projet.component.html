@@ -42,7 +42,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        Province   <select class="form-control" name="province" *ngIf="provinces" [(ngModel)]="selectedProvince" [ngModel]="provinceId"   (ngModelChange)="onRowClick($event)">
+                        Province   <select class="form-control" name="province" *ngIf="provinces"  [ngModel]="provinceId"   (ngModelChange)="onRowClick($event)">
                             
                             <option *ngFor="let province of provinces['_embedded'].provinces" [value]="province.id">{{province.province}}</option>
                           </select>
@@ -61,17 +61,18 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        Maitre d'ouvrage:   <select class="form-control" name="maitreOuvrage" *ngIf="mos" [(ngModel)]="selectedMaitreOuvrage" [ngModel]="moId"   (ngModelChange)="onRowClickMO($event)" >
+                        Maitre d'oeuvrage:   <select class="form-control" name="maitreOuvrage" *ngIf="mos"  [ngModel]="moId"   (ngModelChange)="onRowClickMO($event)" >
                             
                             <option *ngFor="let maitreOuvrage of mos['_embedded'].maitreOuvrages" [value]="maitreOuvrage.id">{{maitreOuvrage.maitreOuvrage}}</option>
                           </select>
                     </div>
+                    
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <div class="mt-2  form-group">
-                         Axe   <select class="form-control" name="axes" *ngIf="axes" [(ngModel)]="selectedAxe" [ngModel]="axeId"   (ngModelChange)="onRowClickAxe($event)">
+                         Axe   <select class="form-control" name="axes" *ngIf="axes"  [ngModel]="axeId"   (ngModelChange)="onRowClickAxe($event)">
                              
                              <option *ngFor="let axe of axes['_embedded'].axes" [value]="axe.id">{{axe.axe}}</option>
                            </select>
@@ -100,7 +101,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        Taux d'Avancement   <select class="form-control" name="tauxAvancement" *ngIf="tauxAvancements">
+                        Taux d'Avancement   <select class="form-control" name="tauxAvancement" *ngIf="tauxAvancements" [ngModel]="tauxId"   (ngModelChange)="onRowClickTaux($event)">
                             
                             <option *ngFor="let tauxAvancement of tauxAvancements['_embedded'].tauxAvancements" [value]="tauxAvancement.id">{{tauxAvancement.tauxAvancement}}</option>
                           </select>
@@ -160,7 +161,7 @@
             <label for="comment">Partenaires:</label>
             <textarea class="form-control" name="partenaireContribution"  ngModel [(ngModel)]="currentProjet.partenaireContribution" rows="5" id="comment"></textarea>
           </div>
-            <button class="btn btn-success" type="submit">Ajouter</button>
+            <button class="btn btn-success" type="submit">Modifier</button>
     
         </form>
     </div>

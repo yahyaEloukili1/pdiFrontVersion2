@@ -98,7 +98,7 @@ this.onGetSecteurs()
   }
     
   onGetMos(){
-    this.pdiService.getResourceMOAll("maitreOuvrages").subscribe(data=>{
+    this.pdiService.getResourceByKeywordMO2("maitreOuvrages",100000,"").subscribe(data=>{
       this.mos = data;
       console.log(data,"+++++++++++")
      },err=>{
@@ -114,7 +114,7 @@ this.onGetSecteurs()
      })
   }
   onGetSecteurs(){
-    this.pdiService.getResourceSecteurAll("secteurs").subscribe(data=>{
+    this.pdiService.getResourceByKeywordSecteur2("secteurs",100000,"").subscribe(data=>{
       this.secteurs = data;
       console.log(data,"+++++++++++")
      },err=>{
@@ -130,9 +130,10 @@ this.onGetSecteurs()
     })
   }
   onGetCommunes(){
-    this.pdiService.getResourceCommuneAll("communes").subscribe(data=>{
+   
+    this.pdiService.getResourceByKeywordCommune2("communes",100000,"").subscribe(data=>{
      this.communes = data;
-     console.log(data,"**************************")
+     console.log(data,"xxxxxxxxxxxxxxxxxxxxx")
     },err=>{
       console.log(err)
     })
@@ -156,13 +157,7 @@ this.onGetSecteurs()
   onGetTauxAvancement(){
     this.pdiService.getResourceTauxAvancementAll("tauxAvancements").subscribe(data=>{
      this.tauxAvancements = data;
-     this.resetCommune()
-     this.resetStatut()
-     this.resetSituationEtude
-     this.resetTaux()
-     this.resetMO()
-     this.resetAxe()
-     this.resetSecteur()
+   
      console.log(data,"**************************")
     },err=>{
       console.log(err)
@@ -196,6 +191,7 @@ this.onGetSecteurs()
   this.resetTaux()
   this.resetSituationEtude()
   this.resetSecteur()
+  this.resetCommune()
      console.log(data) 
     })  
   }
@@ -212,6 +208,7 @@ this.onGetSecteurs()
   this.resetTaux()
   this.resetSituationEtude()
   this.resetAxe()
+  this.resetCommune()
      console.log(data) 
     })  
   }
@@ -227,6 +224,8 @@ this.onGetSecteurs()
   this.resetMO()
   this.resetTaux()
   this.resetSituationEtude()
+  this.resetSituationEtude()
+  this.resetSecteur()
      console.log(data) 
     })
   }
@@ -242,6 +241,8 @@ this.onGetSecteurs()
   this.resetCommune()
   this.resetTaux()
   this.resetSituationEtude()
+  this.resetSecteur()
+  this.resetAxe()
      console.log(data) 
     })
   }
@@ -257,6 +258,8 @@ this.onGetSecteurs()
   this.resetCommune()
   this.resetTaux()
   this.resetMO()
+  this.resetSecteur()
+  this.resetAxe()
      console.log(data) 
     })
   }
@@ -271,6 +274,8 @@ this.onGetSecteurs()
   this.resetSituationEtude()
   this.resetTaux()
   this.resetMO()
+  this.resetSecteur()
+  this.resetAxe()
      console.log(data) 
     })
   }
@@ -286,6 +291,9 @@ this.onGetSecteurs()
   this.resetCommune()
   this.resetSituationEtude()
   this.resetMO()
+  this.resetAxe()
+    this.resetSecteur()
+  
      console.log(data) 
     })
 
