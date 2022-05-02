@@ -32,6 +32,8 @@ import { NewSecteurComponent } from './new-secteur/new-secteur.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardHelper } from './dashboard.helper';
 import { EditProjetComponent } from './edit-projet/edit-projet.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -57,6 +59,7 @@ import { EditProjetComponent } from './edit-projet/edit-projet.component';
     NewSecteurComponent,
     DashboardComponent,
     EditProjetComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,7 @@ import { EditProjetComponent } from './edit-projet/edit-projet.component';
 
     MatSidenavModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -17,36 +17,40 @@ import { NouvelleCommuneComponent } from './nouvelle-commune/nouvelle-commune.co
 import { NouvelleMoComponent } from './nouvelle-mo/nouvelle-mo.component';
 import { NouvelleProvinceComponent } from './nouvelle-province/nouvelle-province.component';
 import { ProjetsComponent } from './projets/projets.component';
+import { LoginComponent } from './login/login.component';
 import { ProvincesComponent } from './provinces/provinces.component';
 import { SecteursComponent } from './secteurs/secteurs.component';
 import { StatutsComponent } from './statuts/statuts.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path: "provinces",component: ProvincesComponent},
-  {path: "secteurs",component: SecteursComponent},
-  {path: "statuts",component: StatutsComponent},
-  {path: "communes",component: CommunesComponent},
-  {path: "axes",component: AxesComponent},
-  {path: "projets",component: ProjetsComponent},
-  {path: "new-province",component: NouvelleProvinceComponent},
-  {path: "edit-province/:id",component: EditProvinceComponent},
-  {path: "edit-commune/:id",component: EditComponentComponent},
-  {path: "mos",component: MaitresOuvragesComponent},
-  {path: "new-mo",component: NouvelleMoComponent},
-  {path: "new-secteur",component: NewSecteurComponent},
-  {path: "new-commune",component: NouvelleCommuneComponent},
-  {path: "new-statut",component: NouveauStatutComponent},
-  {path: "new-axe",component: NouveauAxeComponent},
-  {path: "new-projet",component: NewProjetComponent},
-  {path: "dashboard",component: DashboardComponent},
-  {path: "edit-mo/:id",component: EditMoComponent},
-  {path: "edit-projet/:id",component: EditProjetComponent},
-  {path: "edit-statut/:id",component: EditStatutComponent},
-  {path: "", redirectTo : "/projets", pathMatch: 'full'}
+  {path: "pdi/provinces",component: ProvincesComponent,canActivate: [AuthGuard]},
+  {path: "pdi/secteurs",component: SecteursComponent,canActivate: [AuthGuard]},
+  {path: "pdi/statuts",component: StatutsComponent,canActivate: [AuthGuard]},
+  {path: "pdi/communes",component: CommunesComponent,canActivate: [AuthGuard]},
+  {path: "pdi/axes",component: AxesComponent,canActivate: [AuthGuard]},
+  {path: "pdi/projets",component: ProjetsComponent,canActivate: [AuthGuard]},
+  {path: "pdi/new-province",component: NouvelleProvinceComponent,canActivate: [AuthGuard]},
+  {path: "pdi/edit-province/:id",component: EditProvinceComponent,canActivate: [AuthGuard]},
+  {path: "pdi/edit-commune/:id",component: EditComponentComponent,canActivate: [AuthGuard]},
+  {path: "pdi/mos",component: MaitresOuvragesComponent,canActivate: [AuthGuard]},
+  {path: "pdi/new-mo",component: NouvelleMoComponent,canActivate: [AuthGuard]},
+  {path: "pdi/new-secteur",component: NewSecteurComponent,canActivate: [AuthGuard]},
+  {path: "pdi/new-commune",component: NouvelleCommuneComponent,canActivate: [AuthGuard]},
+  {path: "pdi/new-statut",component: NouveauStatutComponent,canActivate: [AuthGuard]},
+  {path: "pdi/new-axe",component: NouveauAxeComponent,canActivate: [AuthGuard]},
+  {path: "pdi/new-projet",component: NewProjetComponent,canActivate: [AuthGuard]},
+  {path: "pdi/dashboard",component: DashboardComponent,canActivate: [AuthGuard]},
+  {path: "pdi/login",component: LoginComponent},
+  {path: "pdi/edit-mo/:id",component: EditMoComponent,canActivate: [AuthGuard]},
+  {path: "pdi/edit-projet/:id",component: EditProjetComponent,canActivate: [AuthGuard]},
+  {path: "pdi/edit-statut/:id",component: EditStatutComponent,canActivate: [AuthGuard]},
+  {path: "pdi", redirectTo : "pdi/projets", pathMatch: 'full'},
+  
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
