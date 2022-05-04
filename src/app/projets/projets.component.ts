@@ -18,7 +18,7 @@ import { PdiService } from '../services/pdi.service';
 })
 export class ProjetsComponent implements OnInit {
 
-  size:number = 4;
+  size:number = 5;
   currentPage:number = 0;
   totalPages: number;
   contenu
@@ -83,9 +83,9 @@ this.onGetSecteurs()
     this.selectedProvince = {} as Province
   }
   ajouter(){
-    this.router.navigateByUrl('/new-projet');
+    this.router.navigateByUrl('pdi/new-projet');
   }
-  
+ 
   onGetprojets(){
     this.pdiService.getResourceProjet("projets",this.currentPage,this.size).subscribe(data=>{
       console.log(data)

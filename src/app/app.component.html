@@ -21,7 +21,7 @@
 
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark" *ngIf="pdiService.jwtToken">
   <div class="container">
-  <a class="navbar-brand" [routerLink]="['/dashboard']" [routerLinkActive]="['is-active']">PDI</a>
+  <a class="navbar-brand" [routerLink]="['pdi/dashboard']" [routerLinkActive]="['is-active']">PDI</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -31,31 +31,32 @@
         <a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['is-active']">Home </a>
       </li> -->
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/projets']" [routerLinkActive]="['is-active']">Projets</a>
+        <a class="nav-link" [routerLink]="['pdi/projets']" [routerLinkActive]="['is-active']">Projets</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/provinces']" [routerLinkActive]="['is-active']">Provinces</a>
+        <a class="nav-link" [routerLink]="['pdi/provinces']" [routerLinkActive]="['is-active']">Provinces</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/mos']" [routerLinkActive]="['is-active']">Maitres d'ouvrage</a>
+        <a class="nav-link" [routerLink]="['pdi/mos']" [routerLinkActive]="['is-active']">Maitres d'ouvrage</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/statuts']" [routerLinkActive]="['is-active']">Statuts</a>
+        <a class="nav-link" [routerLink]="['pdi/statuts']" [routerLinkActive]="['is-active']">Statuts</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/communes']" [routerLinkActive]="['is-active']">Communes</a>
+        <a class="nav-link" [routerLink]="['pdi/communes']" [routerLinkActive]="['is-active']">Communes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/axes']" [routerLinkActive]="['is-active']">Axes</a>
+        <a class="nav-link" [routerLink]="['pdi/axes']" [routerLinkActive]="['is-active']">Axes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/secteurs']" [routerLinkActive]="['is-active']">Secteurs</a>
+        <a class="nav-link" [routerLink]="['pdi/secteurs']" [routerLinkActive]="['is-active']">Secteurs</a>
       </li>
-      <li class="nav-item">
-        <button (click)="logout()">Logout</button>
-      </li>
+     
+        
+   
     
     </ul>
+    <button (click)="logout()" class="btn btn-danger ml-auto">Logout</button>
   </div>
 </div>
 </nav>

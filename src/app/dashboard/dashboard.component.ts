@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Chart,registerables } from "../../../node_modules/chart.js";
  import { PdiService } from '../services/pdi.service';
  import { DashboardHelper } from "../dashboard.helper";
@@ -7,6 +7,12 @@ import { Chart,registerables } from "../../../node_modules/chart.js";
  import { DashboardHelperAxe } from '../dashboard.helpe.axe';
  import { DashboardHelperEtude } from '../dashboard.helpe.etude';
 import { DashboardHelperTauxAvancement } from '../dashboard.helper.tauxAvancement';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import htmlToPdfmake from 'html-to-pdfmake';
+import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -18,8 +24,42 @@ export class DashboardComponent implements OnInit {
   communes
   result
   myChart
+  @ViewChild('pdfTable') pdfTable: ElementRef
 
   constructor(private pdiService: PdiService, private dashboardHelper: DashboardHelper,private dashboardHelperProvince: DashboardHelperProvince,private dashboardHelperStatut: DashboardHelperStatut,private dashboardHelperAxe: DashboardHelperAxe,private dshboardHelperEtude: DashboardHelperEtude,private dashboardHelperTaux: DashboardHelperTauxAvancement) { 
+  }
+  download(){
+    this.pdiService.downloadAll("/report/pdf").subscribe(data=>{
+        alert('Projets éxportés avec succès')
+      
+    })
+  }
+  downloadParCommune(){
+    this.pdiService.downloadAll("/reportCommune/pdf").subscribe(data=>{
+      alert('Projets par commune éxportés avec succès')
+    
+  })
+  }
+
+  downloadParMo(){
+    this.pdiService.downloadAll("/reportMo/pdf").subscribe(data=>{
+      alert('Projets par maitre douevrage éxportés avec succès')
+    
+  })
+  }
+
+  downloadParStatut(){
+    this.pdiService.downloadAll("/reportStatut/pdf").subscribe(data=>{
+      alert('Projets par statut éxportés avec succès')
+    
+  })
+  }
+
+  downloadParAxe(){
+    this.pdiService.downloadAll("/reportAxe/pdf").subscribe(data=>{
+      alert('Projets par axe éxportés avec succès')
+    
+  })
   }
 
   ngOnInit(): void {
@@ -32,6 +72,33 @@ export class DashboardComponent implements OnInit {
      this.dashboardHelperTaux.populateDashboardTauxAvancement()
 
   }
+  downloadToPdf(){
+    // const doc = new jsPDF();
+   
+    // const pdfTable = this.pdfTable.nativeElement;
+   
+    // var html = htmlToPdfmake(pdfTable.innerHTML);
+     
+    // const documentDefinition = { content: html };
+    // pdfMake.createPdf(documentDefinition).download(); 
+    let data = document.getElementById('pdfTable');
+      
+
+      
+    html2canvas(data).then(canvas => {
+        
+        let docWidth = 208;
+        let docHeight = canvas.height * docWidth / canvas.width;
+        
+        const contentDataURL = canvas.toDataURL('image/png')
+        let doc = new jsPDF('p', 'mm', 'a4');
+        let position = 0;
+        doc.addImage(contentDataURL, 'PNG', 0, position, docWidth, docHeight)
+        
+        doc.save('exportedPdf.pdf');
+    });
+}
+
 
   // populateDashboardCommune(){
   

@@ -1,3 +1,24 @@
+<div class="container mb-4">
+    <button (click)="downloadToPdf()" class="btn btn-success">  <i class="fa fa-print" style="font-size:17px"></i> Exporter l'état</button>&nbsp;
+    <button (click)="download()" class="btn btn-success">
+        <i class="fa fa-print" style="font-size:17px"></i> Projets 
+        </button>&nbsp;
+        <button (click)="downloadParCommune()" class="btn btn-success">
+            <i class="fa fa-print" style="font-size:17px"></i> Par commune
+            </button>&nbsp;
+            <button (click)="downloadParMo()" class="btn btn-success">
+                <i class="fa fa-print" style="font-size:17px"></i> Projets par maitre d'ouevrage
+                </button>&nbsp;
+                <button (click)="downloadParStatut()" class="btn btn-success">
+                    <i class="fa fa-print" style="font-size:17px"></i> Projets par statut
+                    </button>&nbsp;
+                    <button (click)="downloadParAxe()" class="btn btn-success">
+                        <i class="fa fa-print" style="font-size:17px"></i> Projets par axe
+                        </button>
+</div> 
+<div id="pdfTable" #pdfTable>
+
+
 <div class="container">
 
     <div class="row">
@@ -71,12 +92,6 @@
 
 
 
-
-
-
-
-
-
 <div class="container mt-2">
     <div class="">
         <div class="card">
@@ -118,6 +133,8 @@
   
 </div>
 
+
+</div>
 
 
 

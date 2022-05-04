@@ -227,6 +227,10 @@ updateResource(url:string,data:any){ if(this.jwtToken ==null)
    this.jwtToken = localStorage.getItem('token');
    return this.jwtToken
  }
+ downloadAll(url){
+   console.log(this.host+url,"azazazzaazzzzzzzzzzzzz")
+  return this.http.get(this.host+url,{headers: new HttpHeaders({'Authorization': this.jwtToken})})
+ }
  logout(){
    this.jwtToken = null
    localStorage.removeItem('token')
