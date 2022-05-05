@@ -28,7 +28,7 @@ export class CommunesComponent implements OnInit {
      this.onGetProvinces()
   }
   onRowClick(){
-    this.pdiService.getResourceCommuneAll("provinces/"+this.selectedProvince+"/communes").subscribe(data=>{
+    this.pdiService.getResourceAll("provinces/"+this.selectedProvince+"/communes").subscribe(data=>{
       this.communes = data;
       this.selected = true
       
@@ -39,11 +39,11 @@ export class CommunesComponent implements OnInit {
     this.selectedProvince = {} as Province
   }
   ajouter(){
-    this.router.navigateByUrl('/new-commune');
+    this.router.navigateByUrl('pdi/new-commune');
   }
   onGetCommunes(){
-    this.pdiService.getResourceCommune("communes",this.currentPage,this.size).subscribe(data=>{
-      console.log(data,"******************")
+    this.pdiService.getResource("communes",this.currentPage,this.size).subscribe(data=>{
+      
      
      this.communes = data;
     this.totalPages = data['page'].totalPages
@@ -76,7 +76,7 @@ export class CommunesComponent implements OnInit {
 
   chercherCommunes(){
   
-    this.pdiService.getResourceByKeywordCommune("communes",this.currentPage,this.size,this.currentKeyword).subscribe(data=>{
+    this.pdiService.getResourceByKeyword("communes",this.currentPage,this.size,this.currentKeyword,"Commune").subscribe(data=>{
       this.communes = data;
      
      this.totalPages = data['page'].totalPages
@@ -89,7 +89,7 @@ export class CommunesComponent implements OnInit {
   onEditCommune(p:Commune){
     console.log(p)
       let url = p['_links'].self.href;
-      this.router.navigateByUrl("/edit-commune/"+btoa(url))
+      this.router.navigateByUrl("pdi/edit-commune/"+btoa(url))
   }
   onDeleteCommune(url:string){
     if(confirm('Etes vous sur de vouloir supprimer cette commune ?')){

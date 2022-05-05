@@ -34,7 +34,7 @@ export class NewSecteurComponent implements OnInit {
             })
   }
   onGetAxes(){
-    this.pdiService.getResourceAxeAll("axes").subscribe(data=>{
+    this.pdiService.getResourceAll("axes").subscribe(data=>{
      this.axes = data;
      console.log(data)
     },err=>{
@@ -43,7 +43,7 @@ export class NewSecteurComponent implements OnInit {
   
   }
   gotoList(){
-    this.router.navigateByUrl('/secteurs');
+    this.router.navigateByUrl('pdi/secteurs');
   }
   
 }

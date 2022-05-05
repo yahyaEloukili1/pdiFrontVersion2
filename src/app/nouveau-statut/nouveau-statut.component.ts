@@ -24,6 +24,6 @@ f.reset()
     })
 }
 gotoList(){
-  this.router.navigateByUrl('/statuts');
+  this.router.navigateByUrl('pdi/statuts');
 }
 }

@@ -24,10 +24,10 @@ this.onGetStatuts()
   }
 
   ajouter(){
-    this.router.navigateByUrl('/new-statut');
+    this.router.navigateByUrl('pdi/new-statut');
   }
   onGetStatuts(){
-    this.pdiService.getResourceStatut("statuts",this.currentPage,this.size).subscribe(data=>{
+    this.pdiService.getResource("statuts",this.currentPage,this.size).subscribe(data=>{
      this.statuts = data;
     this.totalPages = data['page'].totalPages
     this.pages = new Array<number>(this.totalPages);
@@ -48,7 +48,7 @@ this.onGetStatuts()
 
   chercherStatuts(){
   
-    this.pdiService.getResourceByKeywordStatut("statuts",this.currentPage,this.size,this.currentKeyword).subscribe(data=>{
+    this.pdiService.getResourceByKeyword("statuts",this.currentPage,this.size,this.currentKeyword,"Statut").subscribe(data=>{
       this.statuts = data;
      
      this.totalPages = data['page'].totalPages
@@ -61,7 +61,7 @@ this.onGetStatuts()
   onEditStatut(p:Statut){
     console.log(p)
       let url = p['_links'].self.href;
-      this.router.navigateByUrl("/edit-statut/"+btoa(url))
+      this.router.navigateByUrl("pdi/edit-statut/"+btoa(url))
   }
   onDeleteStatut(url:string){
     if(confirm('Etes vous sur de vouloir supprimer cette province ?')){

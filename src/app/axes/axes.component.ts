@@ -24,11 +24,11 @@ this.onGetAxes()
   }
 
   ajouter(){
-    this.router.navigateByUrl('/new-axe');
+    this.router.navigateByUrl('pdi/new-axe');
   }
   
   onGetAxes(){
-    this.pdiService.getResourceAxe("axes",this.currentPage,this.size).subscribe(data=>{
+    this.pdiService.getResource("axes",this.currentPage,this.size).subscribe(data=>{
       console.log(data)
      this.axes = data;
     this.totalPages = data['page'].totalPages
@@ -52,7 +52,7 @@ this.onGetAxes()
 
   chercherAxes(){
   
-    this.pdiService.getResourceByKeywordAxe("axes",this.currentPage,this.size,this.currentKeyword).subscribe(data=>{
+    this.pdiService.getResourceByKeyword("axes",this.currentPage,this.size,this.currentKeyword,"Axe").subscribe(data=>{
       this.axes = data;
      
      this.totalPages = data['page'].totalPages
@@ -65,7 +65,7 @@ this.onGetAxes()
   onEditAxe(p:Axe){
     console.log(p)
       let url = p['_links'].self.href;
-      this.router.navigateByUrl("/edit-axe/"+btoa(url))
+      this.router.navigateByUrl("pdi/edit-axe/"+btoa(url))
   }
   onDeleteAxe(url:string){
     if(confirm('Etes vous sur de vouloir supprimer cette Axe ?')){

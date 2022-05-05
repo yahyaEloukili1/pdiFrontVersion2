@@ -16,7 +16,7 @@ export class EditStatutComponent implements OnInit {
   
     ngOnInit(): void {
        this.url = atob(this.activatedRoute.snapshot.params['id'])
-      this.pdiService.getOneResourceStatut(this.url).subscribe(data=>{
+      this.pdiService.getOneResource(this.url).subscribe(data=>{
         this.currentStatut = data;
         console.log(this.currentStatut)
       },err=>{
@@ -32,6 +32,6 @@ export class EditStatutComponent implements OnInit {
       })
     }
     gotoList(){
-      this.router.navigateByUrl('/statuts');
+      this.router.navigateByUrl('pdi/statuts');
     }
 }

@@ -29,7 +29,7 @@ this.onGetSecteurs()
 this.onGetAxes()
   }
   onRowClick(){
-    this.pdiService.getResourceSecteurAll("axes/"+this.selectedAxe+"/secteurs").subscribe(data=>{
+    this.pdiService.getResourceAll("axes/"+this.selectedAxe+"/secteurs").subscribe(data=>{
       this.secteurs = data;
       this.selected = true
      console.log(data) 
@@ -37,10 +37,10 @@ this.onGetAxes()
   }
 
   ajouter(){
-    this.router.navigateByUrl('/new-secteur');
+    this.router.navigateByUrl('pdi/new-secteur');
   }
   onGetSecteurs(){
-    this.pdiService.getResourceSecteur("secteurs",this.currentPage,this.size).subscribe(data=>{
+    this.pdiService.getResource("secteurs",this.currentPage,this.size).subscribe(data=>{
       console.log(data,"******************")
      
      this.secteurs = data;
@@ -52,7 +52,7 @@ this.onGetAxes()
 
   }
   onGetAxes(){
-    this.pdiService.getResourceAxeAll("axes").subscribe(data=>{
+    this.pdiService.getResourceAll("axes").subscribe(data=>{
      this.axes = data;
      console.log(data)
     },err=>{
@@ -76,7 +76,7 @@ this.onGetAxes()
 
   checrherSecteurs(){
   
-    this.pdiService.getResourceByKeywordSecteur("secteurs",this.currentPage,this.size,this.currentKeyword).subscribe(data=>{
+    this.pdiService.getResourceByKeyword("secteurs",this.currentPage,this.size,this.currentKeyword,"Secteur").subscribe(data=>{
       this.secteurs = data;
      
      this.totalPages = data['page'].totalPages
@@ -89,7 +89,7 @@ this.onGetAxes()
   onEditSecteur(p:Secteur){
     console.log(p)
       let url = p['_links'].self.href;
-      this.router.navigateByUrl("/edit-secteur/"+btoa(url))
+      this.router.navigateByUrl("pdi/edit-secteur/"+btoa(url))
   }
   reset(){
     this.selectedAxe = {id: 8, axe: "-"} as Axe

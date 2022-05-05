@@ -15,7 +15,7 @@ export class EditMoComponent implements OnInit {
   
     ngOnInit(): void {
        this.url = atob(this.activatedRoute.snapshot.params['id'])
-      this.pdiService.getOneResourceMO(this.url).subscribe(data=>{
+      this.pdiService.getOneResource(this.url).subscribe(data=>{
         console.log(data)
         this.currentMO = data;
         console.log(this.currentMO)
@@ -33,6 +33,6 @@ export class EditMoComponent implements OnInit {
       })
     }
     gotoList(){
-      this.router.navigateByUrl('/mos');
+      this.router.navigateByUrl('pdi/mos');
     }
 }
