@@ -80,7 +80,7 @@ export class NewProjetComponent implements OnInit {
           }
   }
   onGetCommunes(){
-    this.pdiService.getResourceByKeywordCommune2("communes",100000,"").subscribe(data=>{
+    this.pdiService.getResourceByKeywordNoPage("communes",100000,"","Commune").subscribe(data=>{
  
      this.communes = data;
      console.log(data)
@@ -90,7 +90,7 @@ export class NewProjetComponent implements OnInit {
   
   }
   onGetStatuts(){
-    this.pdiService.getResourceStatutAll("statuts").subscribe(data=>{
+    this.pdiService.getResourceAll("statuts").subscribe(data=>{
       console.log(data,"*****************")
      this.statuts = data;
      console.log(data)
@@ -100,7 +100,7 @@ export class NewProjetComponent implements OnInit {
   
   }
   onGetProvinces(){
-    this.pdiService.getResourceProvinceAll("provinces").subscribe(data=>{
+    this.pdiService.getResourceAll("provinces").subscribe(data=>{
       console.log(data,"*****************")
      this.provinces = data;
      console.log(data)
@@ -111,7 +111,7 @@ export class NewProjetComponent implements OnInit {
   }
  
   onGetSituationEtude(){
-    this.pdiService.getResourceSituaionEtudeAll("situationEtudes").subscribe(data=>{
+    this.pdiService.getResourceAll("situationEtudes").subscribe(data=>{
       console.log(data,"*****************")
      this.situationEtudes = data;
      console.log(data)
@@ -121,7 +121,7 @@ export class NewProjetComponent implements OnInit {
   
   }
   onGetAxes(){
-    this.pdiService.getResourceByKeywordAxe2("axes",100000,"").subscribe(data=>{
+    this.pdiService.getResourceByKeywordNoPage("axes",100000,"","Axe").subscribe(data=>{
       console.log(data,"*****************")
      this.axes = data;
      console.log(data)
@@ -131,7 +131,7 @@ export class NewProjetComponent implements OnInit {
   
   }
   onGetSecteurs(){
-    this.pdiService.getResourceByKeywordSecteur2("secteurs",100000,"").subscribe(data=>{
+    this.pdiService.getResourceByKeywordNoPage("secteurs",100000,"","Secteur").subscribe(data=>{
       console.log(data,"*****************")
      this.secteurs = data;
      console.log(data)
@@ -141,7 +141,7 @@ export class NewProjetComponent implements OnInit {
   
   }
   onGetTauxAvancement(){
-    this.pdiService.getResourceTauxAvancementAll("tauxAvancements").subscribe(data=>{
+    this.pdiService.getResourceAll("tauxAvancements").subscribe(data=>{
       console.log(data,"*****************")
      this.tauxAvancements = data;
      console.log(data)
@@ -151,7 +151,7 @@ export class NewProjetComponent implements OnInit {
   
   }
   onGetMOS(){
-    this.pdiService.getResourceByKeywordMO2("maitreOuvrages",100000,"").subscribe(data=>{
+    this.pdiService.getResourceByKeywordNoPage("maitreOuvrages",100000,"","MaitreOuvrage").subscribe(data=>{
     
      this.mos = data;
      console.log(data)
@@ -161,6 +161,6 @@ export class NewProjetComponent implements OnInit {
   
   }
   gotoList(){
-    this.router.navigateByUrl('/projets');
+    this.router.navigateByUrl('pdi/projets');
   }
 }

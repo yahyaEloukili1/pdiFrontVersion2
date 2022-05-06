@@ -24,6 +24,6 @@ f.reset()
     })
 }
   gotoList(){
-    this.router.navigateByUrl('/provinces');
+    this.router.navigateByUrl('pdi/provinces');
   }
 }

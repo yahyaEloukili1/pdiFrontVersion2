@@ -87,7 +87,7 @@ this.onGetSecteurs()
   }
  
   onGetprojets(){
-    this.pdiService.getResourceProjet("projets",this.currentPage,this.size).subscribe(data=>{
+    this.pdiService.getResource("projets",this.currentPage,this.size).subscribe(data=>{
       console.log(data)
      this.projets = data;
      this.totalPages = data['page'].totalPages
@@ -98,7 +98,7 @@ this.onGetSecteurs()
   }
     
   onGetMos(){
-    this.pdiService.getResourceByKeywordMO2("maitreOuvrages",100000,"").subscribe(data=>{
+    this.pdiService.getResourceByKeywordNoPage("maitreOuvrages",100000,"","MaitreOuvrage").subscribe(data=>{
       this.mos = data;
       console.log(data,"+++++++++++")
      },err=>{
@@ -106,7 +106,7 @@ this.onGetSecteurs()
      })
   }
   onGetAxes(){
-    this.pdiService.getResourceAxeAll("axes").subscribe(data=>{
+    this.pdiService.getResourceAll("axes").subscribe(data=>{
       this.axes = data;
       console.log(data,"+++++++++++")
      },err=>{
@@ -114,7 +114,7 @@ this.onGetSecteurs()
      })
   }
   onGetSecteurs(){
-    this.pdiService.getResourceByKeywordSecteur2("secteurs",100000,"").subscribe(data=>{
+    this.pdiService.getResourceByKeywordNoPage("secteurs",100000,"","Secteur").subscribe(data=>{
       this.secteurs = data;
       console.log(data,"+++++++++++")
      },err=>{
@@ -131,7 +131,7 @@ this.onGetSecteurs()
   }
   onGetCommunes(){
    
-    this.pdiService.getResourceByKeywordCommune2("communes",100000,"").subscribe(data=>{
+    this.pdiService.getResourceByKeywordNoPage("communes",100000,"","Commune").subscribe(data=>{
      this.communes = data;
      console.log(data,"xxxxxxxxxxxxxxxxxxxxx")
     },err=>{
@@ -139,7 +139,7 @@ this.onGetSecteurs()
     })
   }
   onGetStatuts(){
-    this.pdiService.getResourceStatutAll("statuts").subscribe(data=>{
+    this.pdiService.getResourceAll("statuts").subscribe(data=>{
      this.statuts = data;
      console.log(data,"**************************")
     },err=>{
@@ -147,7 +147,7 @@ this.onGetSecteurs()
     })
   }
   onGetSituationEtude(){
-    this.pdiService.getResourceSituaionEtudeAll("situationEtudes").subscribe(data=>{
+    this.pdiService.getResourceAll("situationEtudes").subscribe(data=>{
      this.situationEtudes = data;
      console.log(data,"**************************")
     },err=>{
@@ -155,7 +155,7 @@ this.onGetSecteurs()
     })
   }
   onGetTauxAvancement(){
-    this.pdiService.getResourceTauxAvancementAll("tauxAvancements").subscribe(data=>{
+    this.pdiService.getResourceAll("tauxAvancements").subscribe(data=>{
      this.tauxAvancements = data;
    
      console.log(data,"**************************")
@@ -164,7 +164,7 @@ this.onGetSecteurs()
     })
   }
   onRowClick(){
-    this.pdiService.getResourceProjetAll("provinces/"+this.selectedProvince+"/projets").subscribe(data=>{
+    this.pdiService.getResourceAll("provinces/"+this.selectedProvince+"/projets").subscribe(data=>{
       this.projets = data;
       this.selected = true
       this.contenu = ""
@@ -181,7 +181,7 @@ this.onGetSecteurs()
   onRowClickAxe(){
     this.contenu = ""
     console.log(this.selectedAxe,"$$$$$$$$$$$$$$$$$$$")
-    this.pdiService.getResourceProjetAll("axes/"+this.selectedAxe+"/projets").subscribe(data=>{
+    this.pdiService.getResourceAll("axes/"+this.selectedAxe+"/projets").subscribe(data=>{
      
       this.projets = data;
       this.selected = true
@@ -198,7 +198,7 @@ this.onGetSecteurs()
   onRowClickSecteur(){
     this.contenu = ""
     console.log(this.selectedSecteur,"$$$$$$$$$$$$$$$$$$$")
-    this.pdiService.getResourceProjetAll("secteurs/"+this.selectedSecteur+"/projets").subscribe(data=>{
+    this.pdiService.getResourceAll("secteurs/"+this.selectedSecteur+"/projets").subscribe(data=>{
      
       this.projets = data;
       this.selected = true
@@ -215,7 +215,7 @@ this.onGetSecteurs()
   onRowClickCommune(){
     this.contenu = ""
     console.log(this.selectedCommune,"$$$$$$$$$$$$$$$$$$$")
-    this.pdiService.getResourceProjetAll("communes/"+this.selectedCommune+"/projets").subscribe(data=>{
+    this.pdiService.getResourceAll("communes/"+this.selectedCommune+"/projets").subscribe(data=>{
      
       this.projets = data;
       this.selected = true
@@ -232,7 +232,7 @@ this.onGetSecteurs()
   onRowClickMO(){
     this.contenu = ""
     console.log(this.selectedSituationEtude,"$$$$$$$$$$$$$$$$$$$")
-    this.pdiService.getResourceProjetAll("maitreOuvrages/"+this.selectedMaitreOuvrage+"/projets").subscribe(data=>{
+    this.pdiService.getResourceAll("maitreOuvrages/"+this.selectedMaitreOuvrage+"/projets").subscribe(data=>{
      
       this.projets = data;
       this.selected = true
@@ -249,7 +249,7 @@ this.onGetSecteurs()
   onRowClickSituationEtude(){
     this.contenu = ""
     console.log(this.selectedSituationEtude,"$$$$$$$$$$$$$$$$$$$")
-    this.pdiService.getResourceProjetAll("situationEtudes/"+this.selectedSituationEtude+"/projets").subscribe(data=>{
+    this.pdiService.getResourceAll("situationEtudes/"+this.selectedSituationEtude+"/projets").subscribe(data=>{
      
       this.projets = data;
       this.selected = true
@@ -265,7 +265,7 @@ this.onGetSecteurs()
   }
   onRowClickStatut(){
     this.contenu = ""
-    this.pdiService.getResourceProjetAll("statuts/"+this.selectedStatut+"/projets").subscribe(data=>{
+    this.pdiService.getResourceAll("statuts/"+this.selectedStatut+"/projets").subscribe(data=>{
      
       this.projets = data;
       this.selected = true
@@ -282,7 +282,7 @@ this.onGetSecteurs()
   onRowClickTauxAvancement(){
     this.contenu = ""
     console.log(this.selectedSituationEtude,"$$$$$$$$$$$$$$$$$$$")
-    this.pdiService.getResourceProjetAll("tauxAvancements/"+this.selectedTauxAvancement+"/projets").subscribe(data=>{
+    this.pdiService.getResourceAll("tauxAvancements/"+this.selectedTauxAvancement+"/projets").subscribe(data=>{
      
       this.projets = data;
       this.selected = true
@@ -315,7 +315,7 @@ this.onGetSecteurs()
 
   chercherProjets(){
   
-    this.pdiService.getResourceByKeywordProjet("projets",this.currentPage,this.size,this.currentKeyword).subscribe(data=>{
+    this.pdiService.getResourceByKeyword("projets",this.currentPage,this.size,this.currentKeyword,"Projet").subscribe(data=>{
       this.projets = data;
      
      this.totalPages = data['page'].totalPages
@@ -328,7 +328,7 @@ this.onGetSecteurs()
   onEditProjet(p:Projet){
     console.log(p)
       let url = p['_links'].self.href;
-      this.router.navigateByUrl("/edit-projet/"+btoa(url))
+      this.router.navigateByUrl("pdi/edit-projet/"+btoa(url))
   }
   onDeleteProjet(url:string){
     if(confirm('Etes vous sur de vouloir supprimer cette projet ?')){

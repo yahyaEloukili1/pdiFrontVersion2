@@ -24,7 +24,7 @@ f.reset()
     })
 }
 gotoList(){
-  this.router.navigateByUrl('/mos');
+  this.router.navigateByUrl('pdi/mos');
 }
 
 }

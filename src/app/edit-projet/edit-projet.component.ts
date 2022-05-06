@@ -52,7 +52,7 @@ export class EditProjetComponent implements OnInit {
   ngOnInit(): void {
 
     this.url = atob(this.activatedRoute.snapshot.params['id'])
-   this.pdiService.getOneResourceProjet(this.url).subscribe(data=>{
+   this.pdiService.getOneResource(this.url).subscribe(data=>{
      this.currentProjet = data;
      console.log(this.currentProjet,"$$$$$$$$$$$$$$$")
      this.getprovinceId(this.currentProjet._links.province.href)
@@ -88,7 +88,7 @@ export class EditProjetComponent implements OnInit {
   getcommuneId(url){
     let u = url.slice(0,-13)
  
-    this.pdiService.getOneResourceCommune(u).subscribe(data=>{
+    this.pdiService.getOneResource(u).subscribe(data=>{
    this.communeId = data.id
    
 
@@ -97,7 +97,7 @@ export class EditProjetComponent implements OnInit {
   getstatutId(url){
     let u = url.slice(0,-13)
  
-    this.pdiService.getOneResourceStatut(u).subscribe(data=>{
+    this.pdiService.getOneResource(u).subscribe(data=>{
    this.statutId = data.id
    console.log(data,"22222222222222222222222222222222222222222222222")
 
@@ -105,7 +105,7 @@ export class EditProjetComponent implements OnInit {
   }
   getMoId(url){
    
-    this.pdiService.getOneResourceMO(url).subscribe(data=>{
+    this.pdiService.getOneResource(url).subscribe(data=>{
    this.moId = data.id
    
    console.log(data,"22222222222222222222222222222222222222222222222")
@@ -113,7 +113,7 @@ export class EditProjetComponent implements OnInit {
   }
   getSecteurId(url){
    
-    this.pdiService.getOneResourceSecteur(url).subscribe(data=>{
+    this.pdiService.getOneResource(url).subscribe(data=>{
    this.secteurId = data.id
    
 
@@ -121,7 +121,7 @@ export class EditProjetComponent implements OnInit {
   }
   getAxeId(url){
     let u = url.slice(0,-13)
-    this.pdiService.getOneResourceAxe(u).subscribe(data=>{
+    this.pdiService.getOneResource(u).subscribe(data=>{
    this.axeId = data.id
    
 
@@ -129,7 +129,7 @@ export class EditProjetComponent implements OnInit {
   }
   getTauxid(url){
     let u = url.slice(0,-13)
-    this.pdiService.getOneResourcetaux(u).subscribe(data=>{
+    this.pdiService.getOneResource(u).subscribe(data=>{
    this.tauxId = data.id
    
 
@@ -137,7 +137,7 @@ export class EditProjetComponent implements OnInit {
   }
   getSituationId(url){
     let u = url.slice(0,-13)
-    this.pdiService.getOneResourceSituation(u).subscribe(data=>{
+    this.pdiService.getOneResource(u).subscribe(data=>{
    this.situationId = data.id
    
 
@@ -178,7 +178,7 @@ export class EditProjetComponent implements OnInit {
               }
 
   gotoList(){
-    this.router.navigateByUrl('/projets');
+    this.router.navigateByUrl('pdi/projets');
   }
   onUpdateCommune(value: any){
     if(this.selectedProvince)
@@ -236,7 +236,7 @@ export class EditProjetComponent implements OnInit {
     })
   }
   onGetCommunes(){
-    this.pdiService.getResourceByKeywordCommune2("communes",100000,"").subscribe(data=>{
+    this.pdiService.getResourceByKeywordNoPage("communes",100000,"","Commune").subscribe(data=>{
  
      this.communes = data;
   
@@ -246,7 +246,7 @@ export class EditProjetComponent implements OnInit {
   
   }
   onGetStatuts(){
-    this.pdiService.getResourceStatutAll("statuts").subscribe(data=>{
+    this.pdiService.getResourceAll("statuts").subscribe(data=>{
      
      this.statuts = data;
   
@@ -256,7 +256,7 @@ export class EditProjetComponent implements OnInit {
   
   }
   onGetProvinces(){
-    this.pdiService.getResourceProvinceAll("provinces").subscribe(data=>{
+    this.pdiService.getResourceAll("provinces").subscribe(data=>{
      
      this.provinces = data;
   
@@ -267,7 +267,7 @@ export class EditProjetComponent implements OnInit {
   }
  
   onGetSituationEtude(){
-    this.pdiService.getResourceSituaionEtudeAll("situationEtudes").subscribe(data=>{
+    this.pdiService.getResourceAll("situationEtudes").subscribe(data=>{
      
      this.situationEtudes = data;
   
@@ -278,7 +278,7 @@ export class EditProjetComponent implements OnInit {
   }
   onGetAxes(){
      
-    this.pdiService.getResourceByKeywordAxe2("axes",100000,"").subscribe(data=>{
+    this.pdiService.getResourceByKeywordNoPage("axes",100000,"","Axe").subscribe(data=>{
      
      this.axes = data;
   
@@ -289,7 +289,7 @@ export class EditProjetComponent implements OnInit {
   }
   onGetSecteurs(){
       
-    this.pdiService.getResourceByKeywordSecteur2("secteurs",100000,"").subscribe(data=>{
+    this.pdiService.getResourceByKeywordNoPage("secteurs",100000,"","Secteur").subscribe(data=>{
      
      this.secteurs = data;
   
@@ -299,7 +299,7 @@ export class EditProjetComponent implements OnInit {
   
   }
   onGetTauxAvancement(){
-    this.pdiService.getResourceTauxAvancementAll("tauxAvancements").subscribe(data=>{
+    this.pdiService.getResourceAll("tauxAvancements").subscribe(data=>{
      
      this.tauxAvancements = data;
   
@@ -310,7 +310,7 @@ export class EditProjetComponent implements OnInit {
   }
   onGetMOS(){
    
-      this.pdiService.getResourceByKeywordMO2("maitreOuvrages",100000,"").subscribe(data=>{
+      this.pdiService.getResourceByKeywordNoPage("maitreOuvrages",100000,"","MaitreOuvrages").subscribe(data=>{
      this.mos = data;
   
     },err=>{

@@ -27,7 +27,7 @@ this.onGetMO()
     this.router.navigateByUrl('/new-mo');
   }
   onGetMO(){
-    this.pdiService.getResourceMO("maitreOuvrages",this.currentPage,this.size).subscribe(data=>{
+    this.pdiService.getResource("maitreOuvrages",this.currentPage,this.size).subscribe(data=>{
      this.maitreOuvrages = data;
      console.log(data)
     this.totalPages = data['page'].totalPages
@@ -49,7 +49,7 @@ this.onGetMO()
 
   chercherMO(){
   
-    this.pdiService.getResourceByKeywordMO("maitreOuvrages",this.currentPage,this.size,this.currentKeyword).subscribe(data=>{
+    this.pdiService.getResourceByKeyword("maitreOuvrages",this.currentPage,this.size,this.currentKeyword,"MaitreOuvrage").subscribe(data=>{
       this.maitreOuvrages = data;
       console.log(data)
      console.log(data,"kekekek")

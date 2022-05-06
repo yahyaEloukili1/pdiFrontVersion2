@@ -24,7 +24,7 @@ f.reset()
     })
 }
 gotoList(){
-  this.router.navigateByUrl('/axes');
+  this.router.navigateByUrl('pdi/axes');
 }
 
 }

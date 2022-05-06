@@ -26,7 +26,7 @@ this.onGetProvinces()
   }
 
   ajouter(){
-    this.router.navigateByUrl('/new-province');
+    this.router.navigateByUrl('pdi/new-province');
   }
   
   onGetProvinces(){
@@ -53,7 +53,7 @@ this.onGetProvinces()
 
   chercherProvinces(){
   
-    this.pdiService.getResourceByKeyword("provinces",this.currentPage,this.size,this.currentKeyword).subscribe(data=>{
+    this.pdiService.getResourceByKeyword("provinces",this.currentPage,this.size,this.currentKeyword,"Province").subscribe(data=>{
       this.provinces = data;
      
      this.totalPages = data['page'].totalPages
@@ -66,7 +66,7 @@ this.onGetProvinces()
   onEditProvince(p:Province){
     console.log(p)
       let url = p['_links'].self.href;
-      this.router.navigateByUrl("/edit-province/"+btoa(url))
+      this.router.navigateByUrl("pdi/edit-province/"+btoa(url))
   }
   onDeleteProvince(url:string){
     if(confirm('Etes vous sur de vouloir supprimer cette province ?')){

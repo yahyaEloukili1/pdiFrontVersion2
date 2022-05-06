@@ -41,6 +41,6 @@ onGetProvinces(){
 
 }
 gotoList(){
-  this.router.navigateByUrl('/communes');
+  this.router.navigateByUrl('pdi/communes');
 }
 }

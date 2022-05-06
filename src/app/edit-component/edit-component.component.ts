@@ -23,7 +23,7 @@ export class EditComponentComponent implements OnInit {
     ngOnInit(): void {
       this.onGetProvinces()
        this.url = atob(this.activatedRoute.snapshot.params['id'])
-      this.pdiService.getOneResourceCommune(this.url).subscribe(data=>{
+      this.pdiService.getOneResource(this.url).subscribe(data=>{
         this.currentCommune = data;
         console.log(this.currentCommune,"$$$$$$$$$$$$$$$")
         this.getId(this.currentCommune._links.province.href)
@@ -70,6 +70,6 @@ export class EditComponentComponent implements OnInit {
       })
     }
     gotoList(){
-      this.router.navigateByUrl('/communes');
+      this.router.navigateByUrl('pdi/communes');
     }
 }
