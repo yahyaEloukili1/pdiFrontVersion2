@@ -17,6 +17,7 @@ import { TauxAvancement } from '../models/TauxAvancement';
 export class PdiService {
 
   
+
   host= 'http://localhost:8081'
    jwtToken = null;
   constructor(private http: HttpClient) { }
