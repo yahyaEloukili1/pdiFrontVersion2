@@ -55,40 +55,11 @@ this.onGetMos()
 this.onGetAxes()
 this.onGetSecteurs()
   }
-  resetProvince(){
-    this.selectedProvince = {} as Province
-  }
-  resetMO(){
-    this.selectedMaitreOuvrage = {} as MO
-  }
-  resetCommune(){
-    this.selectedCommune = {} as Commune
-  }
-  resetStatut(){
-    this.selectedStatut = {} as Statut
-  }
-  resetSituationEtude(){
-    this.selectedSituationEtude = {} as SituationEtude
-  }
-  resetTaux(){
-    this.selectedTauxAvancement = {} as TauxAvancement
-  }
-  resetSecteur(){
-    this.selectedSecteur = {} as Secteur
-  }
-  resetAxe(){
-    this.selectedAxe = {} as Axe
-  }
-  reset(){
-    this.selectedProvince = {} as Province
-  }
-  ajouter(){
-    this.router.navigateByUrl('pdi/new-projet');
-  }
+ 
  
   onGetprojets(){
     this.pdiService.getResource("projets",this.currentPage,this.size).subscribe(data=>{
-      console.log(data)
+      console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
      this.projets = data;
      this.totalPages = data['page'].totalPages
       this.pages = new Array<number>(this.totalPages);
@@ -97,6 +68,39 @@ this.onGetSecteurs()
     })
   }
     
+ 
+  onPageProjet(i:number){
+    this.currentPage = i;
+   this.chercherProjets()
+  }
+  onChercher(form :any){
+    this.resetProvince()
+    this.resetCommune()
+    this.resetStatut()
+    this.resetSituationEtude()
+      this.currentPage = 0;
+      if(!form.keyword){
+        form.keyword = ""
+      }
+      console.log(form,"77777777777777777777777")
+      this.currentKeyword = form.keyword;
+      this.selected = false
+      console.log(this.pages,"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
+      this.chercherProjets()
+  }
+
+  chercherProjets(){
+  
+    this.pdiService.getResourceByKeyword("projets",this.currentPage,this.size,this.currentKeyword,"Projet").subscribe(data=>{
+      this.projets = data;
+     
+     this.totalPages = data['page'].totalPages
+     this.pages = new Array<number>(this.totalPages);
+     },err=>{
+       console.log(err) 
+     })
+
+  }
   onGetMos(){
     this.pdiService.getResourceByKeywordNoPage("maitreOuvrages",100000,"","MaitreOuvrage").subscribe(data=>{
       this.mos = data;
@@ -298,32 +302,35 @@ this.onGetSecteurs()
     })
 
   }
-  onPageProjet(i:number){
-    this.currentPage = i;
-   this.chercherProjets()
+  resetProvince(){
+    this.selectedProvince = {} as Province
   }
-  onChercher(form :any){
-    this.resetProvince()
-    this.resetCommune()
-    this.resetStatut()
-    this.resetSituationEtude()
-    this.resetTaux()
-      this.currentPage = 0;
-      this.currentKeyword = form.keyword;
-      this.chercherProjets()
+  resetMO(){
+    this.selectedMaitreOuvrage = {} as MO
   }
-
-  chercherProjets(){
-  
-    this.pdiService.getResourceByKeyword("projets",this.currentPage,this.size,this.currentKeyword,"Projet").subscribe(data=>{
-      this.projets = data;
-     
-     this.totalPages = data['page'].totalPages
-     this.pages = new Array<number>(this.totalPages);
-     },err=>{
-       console.log(err) 
-     })
-
+  resetCommune(){
+    this.selectedCommune = {} as Commune
+  }
+  resetStatut(){
+    this.selectedStatut = {} as Statut
+  }
+  resetSituationEtude(){
+    this.selectedSituationEtude = {} as SituationEtude
+  }
+  resetTaux(){
+    this.selectedTauxAvancement = {} as TauxAvancement
+  }
+  resetSecteur(){
+    this.selectedSecteur = {} as Secteur
+  }
+  resetAxe(){
+    this.selectedAxe = {} as Axe
+  }
+  reset(){
+    this.selectedProvince = {} as Province
+  }
+  ajouter(){
+    this.router.navigateByUrl('pdi/new-projet');
   }
   onEditProjet(p:Projet){
     console.log(p)
