@@ -17,7 +17,7 @@ import { TauxAvancement } from '../models/TauxAvancement';
 export class PdiService {
 
   
-   host= 'http://localhost:8087'
+   host = 'http://localhost:8087'
   //host= '//10.39.6.25:8087'
 
    jwtToken = null;
@@ -26,41 +26,41 @@ export class PdiService {
   getResourceAll(resource: String):Observable<any[]>{
     if(this.jwtToken ==null)
     this.loadToken()
-    return this.http.get<any[]>(`${this.host}/${resource}`,{headers: new HttpHeaders({'Authorization': this.jwtToken})});
+    return this.http.get<any[]>(`${this.host}/${resource}`);
 }
   getResource(resource: String,page:number,size:number):Observable<any[]>{ if(this.jwtToken ==null)
     this.loadToken()
-      return this.http.get<any[]>(`${this.host}/${resource}?page=${page}&size=${size}`,{headers: new HttpHeaders({'Authorization': this.jwtToken})});
+      return this.http.get<any[]>(`${this.host}/${resource}?page=${page}&size=${size}`);
   }
 
   addResource(resource: string,value:any):Observable<any>{ if(this.jwtToken ==null)
     this.loadToken()
-    return this.http.post<any>(`${this.host}/${resource}`,value,{headers: new HttpHeaders({'Authorization': this.jwtToken})});
+    return this.http.post<any>(`${this.host}/${resource}`,value);
 }
 
   getResourceByKeyword(resource: String,page:number,size:number,mc:string,source:string):Observable<any[]>{ if(this.jwtToken ==null)
     this.loadToken()
     console.log(`${this.host}/${resource}/search/by${source}Page?mc=${mc}&page=${page}&size=${size}`,"aaaaaaaaaaaaaaaaaaaaa")
-    return this.http.get<any[]>(`${this.host}/${resource}/search/by${source}Page?mc=${mc}&page=${page}&size=${size}`,{headers: new HttpHeaders({'Authorization': this.jwtToken})});
+    return this.http.get<any[]>(`${this.host}/${resource}/search/by${source}Page?mc=${mc}&page=${page}&size=${size}`);
 }
 
 getResourceByKeywordNoPage(resource: String,size:number,mc:string,source:string):Observable<any[]>{ if(this.jwtToken ==null)
   this.loadToken()
-  return this.http.get<any[]>(`${this.host}/${resource}/search/by${source}Page?mc=${mc}&size=${size}`,{headers: new HttpHeaders({'Authorization': this.jwtToken})});
+  return this.http.get<any[]>(`${this.host}/${resource}/search/by${source}Page?mc=${mc}&size=${size}`);
 }
 
 
 deleteResource(resource:string,url:string){ if(this.jwtToken ==null)
   this.loadToken()
- return this.http.delete(url,{headers: new HttpHeaders({'Authorization': this.jwtToken})});
+ return this.http.delete(url);
 }
 getOneResource(url:string):Observable<any>{ if(this.jwtToken ==null)
   this.loadToken()
- return this.http.get<any>(url,{headers: new HttpHeaders({'Authorization': this.jwtToken})})
+ return this.http.get<any>(url)
 }
 getOneResourceById(resource:string,id:number):Observable<Province>{ if(this.jwtToken ==null)
   this.loadToken()
-  return this.http.get<Province>(`${this.host}/${resource}/${id}`,{headers: new HttpHeaders({'Authorization': this.jwtToken})})
+  return this.http.get<Province>(`${this.host}/${resource}/${id}`)
  }
 
 
@@ -69,7 +69,7 @@ getOneResourceById(resource:string,id:number):Observable<Province>{ if(this.jwtT
 updateResource(url:string,data:any){ if(this.jwtToken ==null)
   this.loadToken()
   console.log(url)
-  return this.http.patch(url,data,{headers: new HttpHeaders({'Authorization': this.jwtToken})})
+  return this.http.patch(url,data)
  }
  login(user){ 
    return this.http.post(this.host+"/login",user,{observe: 'response'})
@@ -84,7 +84,7 @@ updateResource(url:string,data:any){ if(this.jwtToken ==null)
  }
  downloadAll(url){
    console.log(this.host+url,"azazazzaazzzzzzzzzzzzz")
-  return this.http.get(this.host+url,{headers: new HttpHeaders({'Authorization': this.jwtToken})})
+   return this.http.get(this.host+url)
  }
  logout(){
    this.jwtToken = null

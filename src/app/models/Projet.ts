@@ -9,6 +9,7 @@ export interface Projet{
     maitreOuvrageDelegue: string;
     delai: number
     cout: number
+    numero: string
     dateLancement: Date
     partenaireContribution: Text
     _links
