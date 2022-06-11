@@ -50,6 +50,7 @@ const routes: Routes = [
   {path: "pdi/edit-statut/:id",component: EditStatutComponent,canActivate: [AuthGuard]},
   {path: "pdi/edit-secteur/:id",component: EditSecteurComponent,canActivate: [AuthGuard]},
   {path: "pdi", redirectTo : "pdi/projets", pathMatch: 'full'},
+  {path: "", redirectTo : "pdi/projets", pathMatch: 'full'},
   
 ];
 

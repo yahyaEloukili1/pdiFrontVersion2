@@ -62,10 +62,6 @@ getOneResourceById(resource:string,id:number):Observable<Province>{ if(this.jwtT
   this.loadToken()
   return this.http.get<Province>(`${this.host}/${resource}/${id}`)
  }
-
-
-
-
 updateResource(url:string,data:any){ if(this.jwtToken ==null)
   this.loadToken()
   console.log(url)
