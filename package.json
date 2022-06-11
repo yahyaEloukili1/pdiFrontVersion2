@@ -27,6 +27,7 @@
     "chartjs-plugin-datalabels": "^2.0.0",
     "font-awesome": "^4.7.0",
     "html-to-pdfmake": "^2.3.11",
+    "http-server": "^14.1.0",
     "jspdf": "^2.5.1",
     "pdfmake": "^0.2.5",
     "rxjs": "~7.5.0",

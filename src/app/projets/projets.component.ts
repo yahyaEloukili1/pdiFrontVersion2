@@ -17,7 +17,6 @@ import { PdiService } from '../services/pdi.service';
   styleUrls: ['./projets.component.css']
 })
 export class ProjetsComponent implements OnInit {
-
   size:number = 5;
   currentPage:number = 0;
   totalPages: number;
@@ -45,122 +44,120 @@ export class ProjetsComponent implements OnInit {
   constructor(private pdiService:PdiService, private router: Router) { }
 
   ngOnInit(): void {
-this.onGetprojets()
-this.onGetProvinces()
-this.onGetCommunes()
-this.onGetStatuts()
-this.onGetSituationEtude()
-this.onGetTauxAvancement()
-this.onGetMos()
-this.onGetAxes()
-this.onGetSecteurs()
+    this.onGetprojets()
+    this.onGetProvinces()
+    this.onGetCommunes()
+    this.onGetStatuts()
+    this.onGetSituationEtude()
+    this.onGetTauxAvancement()
+    this.onGetMos()
+    this.onGetAxes()
+    this.onGetSecteurs()
   }
-  resetProvince(){
-    this.selectedProvince = {} as Province
-  }
-  resetMO(){
-    this.selectedMaitreOuvrage = {} as MO
-  }
-  resetCommune(){
-    this.selectedCommune = {} as Commune
-  }
-  resetStatut(){
-    this.selectedStatut = {} as Statut
-  }
-  resetSituationEtude(){
-    this.selectedSituationEtude = {} as SituationEtude
-  }
-  resetTaux(){
-    this.selectedTauxAvancement = {} as TauxAvancement
-  }
-  resetSecteur(){
-    this.selectedSecteur = {} as Secteur
-  }
-  resetAxe(){
-    this.selectedAxe = {} as Axe
-  }
-  reset(){
-    this.selectedProvince = {} as Province
-  }
-  ajouter(){
-    this.router.navigateByUrl('pdi/new-projet');
-  }
+ 
  
   onGetprojets(){
     this.pdiService.getResource("projets",this.currentPage,this.size).subscribe(data=>{
-      console.log(data)
      this.projets = data;
      this.totalPages = data['page'].totalPages
       this.pages = new Array<number>(this.totalPages);
     },err=>{
-      console.log(err)
+
     })
   }
     
+ 
+  onPageProjet(i:number){
+    this.currentPage = i;
+   this.chercherProjets()
+  }
+  onChercher(form :any){
+    this.resetProvince()
+    this.resetCommune()
+    this.resetStatut()
+    this.resetSituationEtude()
+      this.currentPage = 0;
+      if(!form.keyword){
+        form.keyword = ""
+      }
+      
+      this.currentKeyword = form.keyword;
+      this.selected = false
+
+      this.chercherProjets()
+  }
+
+  chercherProjets(){
+  
+    this.pdiService.getResourceByKeyword("projets",this.currentPage,this.size,this.currentKeyword,"Projet").subscribe(data=>{
+      this.projets = data;
+     this.totalPages = data['page'].totalPages
+     this.pages = new Array<number>(this.totalPages);
+     },err=>{
+  
+     })
+
+  }
   onGetMos(){
     this.pdiService.getResourceByKeywordNoPage("maitreOuvrages",100000,"","MaitreOuvrage").subscribe(data=>{
       this.mos = data;
-      console.log(data,"+++++++++++")
+      
      },err=>{
-       console.log(err)
+      
      })
   }
   onGetAxes(){
     this.pdiService.getResourceAll("axes").subscribe(data=>{
       this.axes = data;
-      console.log(data,"+++++++++++")
+      
      },err=>{
-       console.log(err)
+      
      })
   }
   onGetSecteurs(){
     this.pdiService.getResourceByKeywordNoPage("secteurs",100000,"","Secteur").subscribe(data=>{
       this.secteurs = data;
-      console.log(data,"+++++++++++")
+      
      },err=>{
-       console.log(err)
+      
      })
   }
   onGetProvinces(){
     this.pdiService.getResourceAll("provinces").subscribe(data=>{
      this.provinces = data;
-     console.log(data,"**************************")
     },err=>{
-      console.log(err)
+     
     })
   }
   onGetCommunes(){
    
     this.pdiService.getResourceByKeywordNoPage("communes",100000,"","Commune").subscribe(data=>{
      this.communes = data;
-     console.log(data,"xxxxxxxxxxxxxxxxxxxxx")
+   
     },err=>{
-      console.log(err)
+      
     })
   }
   onGetStatuts(){
     this.pdiService.getResourceAll("statuts").subscribe(data=>{
      this.statuts = data;
-     console.log(data,"**************************")
     },err=>{
-      console.log(err)
+
     })
   }
   onGetSituationEtude(){
     this.pdiService.getResourceAll("situationEtudes").subscribe(data=>{
      this.situationEtudes = data;
-     console.log(data,"**************************")
     },err=>{
-      console.log(err)
+
     })
   }
   onGetTauxAvancement(){
     this.pdiService.getResourceAll("tauxAvancements").subscribe(data=>{
      this.tauxAvancements = data;
    
-     console.log(data,"**************************")
     },err=>{
-      console.log(err)
+
     })
   }
   onRowClick(){
@@ -180,9 +177,7 @@ this.onGetSecteurs()
   }
   onRowClickAxe(){
     this.contenu = ""
-    console.log(this.selectedAxe,"$$$$$$$$$$$$$$$$$$$")
     this.pdiService.getResourceAll("axes/"+this.selectedAxe+"/projets").subscribe(data=>{
-     
       this.projets = data;
       this.selected = true
   this.resetProvince()
@@ -214,7 +209,6 @@ this.onGetSecteurs()
   }
   onRowClickCommune(){
     this.contenu = ""
-    console.log(this.selectedCommune,"$$$$$$$$$$$$$$$$$$$")
     this.pdiService.getResourceAll("communes/"+this.selectedCommune+"/projets").subscribe(data=>{
      
       this.projets = data;
@@ -226,14 +220,12 @@ this.onGetSecteurs()
   this.resetSituationEtude()
   this.resetSituationEtude()
   this.resetSecteur()
-     console.log(data) 
+    
     })
   }
   onRowClickMO(){
     this.contenu = ""
-    console.log(this.selectedSituationEtude,"$$$$$$$$$$$$$$$$$$$")
     this.pdiService.getResourceAll("maitreOuvrages/"+this.selectedMaitreOuvrage+"/projets").subscribe(data=>{
-     
       this.projets = data;
       this.selected = true
   this.resetProvince()
@@ -243,16 +235,15 @@ this.onGetSecteurs()
   this.resetSituationEtude()
   this.resetSecteur()
   this.resetAxe()
-     console.log(data) 
+  
     })
   }
   onRowClickSituationEtude(){
     this.contenu = ""
     console.log(this.selectedSituationEtude,"$$$$$$$$$$$$$$$$$$$")
     this.pdiService.getResourceAll("situationEtudes/"+this.selectedSituationEtude+"/projets").subscribe(data=>{
-     
       this.projets = data;
-      this.selected = true
+      this.selected = true;
   this.resetProvince()
   this.resetStatut()
   this.resetCommune()
@@ -298,32 +289,35 @@ this.onGetSecteurs()
     })
 
   }
-  onPageProjet(i:number){
-    this.currentPage = i;
-   this.chercherProjets()
+  resetProvince(){
+    this.selectedProvince = {} as Province
   }
-  onChercher(form :any){
-    this.resetProvince()
-    this.resetCommune()
-    this.resetStatut()
-    this.resetSituationEtude()
-    this.resetTaux()
-      this.currentPage = 0;
-      this.currentKeyword = form.keyword;
-      this.chercherProjets()
+  resetMO(){
+    this.selectedMaitreOuvrage = {} as MO
   }
-
-  chercherProjets(){
-  
-    this.pdiService.getResourceByKeyword("projets",this.currentPage,this.size,this.currentKeyword,"Projet").subscribe(data=>{
-      this.projets = data;
-     
-     this.totalPages = data['page'].totalPages
-     this.pages = new Array<number>(this.totalPages);
-     },err=>{
-       console.log(err) 
-     })
-
+  resetCommune(){
+    this.selectedCommune = {} as Commune
+  }
+  resetStatut(){
+    this.selectedStatut = {} as Statut
+  }
+  resetSituationEtude(){
+    this.selectedSituationEtude = {} as SituationEtude
+  }
+  resetTaux(){
+    this.selectedTauxAvancement = {} as TauxAvancement
+  }
+  resetSecteur(){
+    this.selectedSecteur = {} as Secteur
+  }
+  resetAxe(){
+    this.selectedAxe = {} as Axe
+  }
+  reset(){
+    this.selectedProvince = {} as Province
+  }
+  ajouter(){
+    this.router.navigateByUrl('pdi/new-projet');
   }
   onEditProjet(p:Projet){
     console.log(p)
@@ -336,11 +330,9 @@ this.onGetSecteurs()
       this.chercherProjets();
       this.onGetprojets()
     },err=>{
-      console.log(err)
+    
     })
     }
-     
-   
-  }  
+    }  
 
 }

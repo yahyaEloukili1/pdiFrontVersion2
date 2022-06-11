@@ -1,0 +1,28 @@
+<div class="col-md-4 mx-auto">
+    <button (click)="gotoList()" class="btn btn-primary">Liste des axes</button> <br> <br>
+    <div class="card card-default  mx-auto">
+        <div class="card-header">
+            Nouveau axe
+        </div>
+        <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onUpdateAxe(f.value)" *ngIf="currentAxe">
+                <div class="form-group">
+                    <label  class="control-label">
+                        Axe
+                    </label>
+                    <input type="text" name="axe" ngModel  [(ngModel)]="currentAxe.axe" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label  class="control-label">
+                        Axe en arabe
+                    </label>
+                    <input type="text" name="axe_ar" ngModel [(ngModel)]="currentAxe.axe_ar" class="form-control">
+                </div>
+              
+                <button class="btn btn-success" type="submit">Modifier</button>
+        
+            </form>
+        </div>
+       
+    </div>
+</div>

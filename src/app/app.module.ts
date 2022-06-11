@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProvincesComponent } from './provinces/provinces.component';
 import { NouvelleProvinceComponent } from './nouvelle-province/nouvelle-province.component';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule }   from '@angular/forms';
 import { EditProvinceComponent } from './edit-province/edit-province.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,6 +34,9 @@ import { DashboardHelper } from './dashboard.helper';
 import { EditProjetComponent } from './edit-projet/edit-projet.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
+import { EditSecteurComponent } from './edit-secteur/edit-secteur.component';
+import { EditAxeComponent } from './edit-axe/edit-axe.component';
+import { TokenInterceptorService } from "./token-interceptor.service";
 
 
 @NgModule({
@@ -60,6 +63,8 @@ import { AuthGuard } from './auth.guard';
     DashboardComponent,
     EditProjetComponent,
     LoginComponent,
+    EditSecteurComponent,
+    EditAxeComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +79,11 @@ import { AuthGuard } from './auth.guard';
 
     MatSidenavModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,{
+    provide : HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,6 +13,9 @@ mode = 0
   constructor(private pdiService: PdiService,private router: Router) { }
 
   ngOnInit(): void {
+    if(this.pdiService.jwtToken){
+      this.router.navigateByUrl("pdi/projets")
+    }
   }
   onSubmit(f:NgForm){
       this.pdiService.login(f.value).subscribe(resp=>{

@@ -23,14 +23,27 @@
                         <input type="text" name="projet_ar" ngModel class="form-control">
                     </div>
                 
-           
+           <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label  class="control-label">
+                        Numéro
+                    </label>
+                    <input type="text" name="numero" ngModel class="form-control">
+                </div> 
+               </div>
+               <div class="col">
+                <div class="form-group">
+                    <label  class="control-label">
+                        Localisation
+                    </label>
+                    <input type="text" name="location" ngModel class="form-control">
+                </div> 
+               </div>
+             
+           </div>
          
-            <div class="form-group">
-                <label  class="control-label">
-                    Localisation
-                </label>
-                <input type="text" name="location" ngModel class="form-control">
-            </div> 
+           
             <div class="row">
                 <div class="col">
                     <div class="form-group">
@@ -153,7 +166,7 @@
             <label  class="control-label">
                 Benificiares
             </label>
-            <input type="text" name="benificiares" ngModel class="form-control">
+            <textarea class="form-control" name="benificiares" ngModel rows="5" id="comment"></textarea>
         </div>
            
         <div class="form-group">

@@ -22,6 +22,8 @@ import { ProvincesComponent } from './provinces/provinces.component';
 import { SecteursComponent } from './secteurs/secteurs.component';
 import { StatutsComponent } from './statuts/statuts.component';
 import { AuthGuard } from './auth.guard';
+import { EditAxeComponent } from './edit-axe/edit-axe.component';
+import { EditSecteurComponent } from './edit-secteur/edit-secteur.component';
 
 const routes: Routes = [
   {path: "pdi/provinces",component: ProvincesComponent,canActivate: [AuthGuard]},
@@ -32,6 +34,7 @@ const routes: Routes = [
   {path: "pdi/projets",component: ProjetsComponent,canActivate: [AuthGuard]},
   {path: "pdi/new-province",component: NouvelleProvinceComponent,canActivate: [AuthGuard]},
   {path: "pdi/edit-province/:id",component: EditProvinceComponent,canActivate: [AuthGuard]},
+  {path: "pdi/edit-axe/:id",component: EditAxeComponent,canActivate: [AuthGuard]},
   {path: "pdi/edit-commune/:id",component: EditComponentComponent,canActivate: [AuthGuard]},
   {path: "pdi/mos",component: MaitresOuvragesComponent,canActivate: [AuthGuard]},
   {path: "pdi/new-mo",component: NouvelleMoComponent,canActivate: [AuthGuard]},
@@ -45,6 +48,7 @@ const routes: Routes = [
   {path: "pdi/edit-mo/:id",component: EditMoComponent,canActivate: [AuthGuard]},
   {path: "pdi/edit-projet/:id",component: EditProjetComponent,canActivate: [AuthGuard]},
   {path: "pdi/edit-statut/:id",component: EditStatutComponent,canActivate: [AuthGuard]},
+  {path: "pdi/edit-secteur/:id",component: EditSecteurComponent,canActivate: [AuthGuard]},
   {path: "pdi", redirectTo : "pdi/projets", pathMatch: 'full'},
   
 ];
@@ -52,5 +56,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes,{useHash: true})],
   exports: [RouterModule]
+  
 })
 export class AppRoutingModule { }
